@@ -158,54 +158,54 @@
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-steve">
-          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/steve.mp4"
+        <div class="item">
+          <video poster="" id="demo_1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demo_episode1_converted.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-chair-tp">
-          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair-tp.mp4"
+          <video poster="" id="demo_2" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/episode772_converted.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-shiba">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/shiba.mp4"
+          <video poster="" id="demo_3" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/episode1215_converted.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-fullbody">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/fullbody.mp4"
+          <video poster="" id="demo_4" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/episode100342_converted.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-blueshirt">
-          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/blueshirt.mp4"
+          <video poster="" id="demo_5" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/episode100663_converted.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-mask">
-          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/mask.mp4"
+          <video poster="" id="demo_6" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/episode170165_converted.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-coffee">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/coffee.mp4"
+          <video poster="" id="demo_7" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/episode180919_converted.mp4"
                     type="video/mp4">
           </video>
         </div>
-        <div class="item item-toby">
+        <!-- <div class="item item-toby">
           <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
             <source src="./static/videos/toby2.mp4"
                     type="video/mp4">
           </video>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -239,13 +239,16 @@
       <!-- Matting. -->
       <div class="column">
         <div class="content">
-          <h2 class="title is-3 has-text-centered">Spatial Object Parts</h2>
+          <h2 class="title is-3 has-text-centered">Object Parts</h2>
           <div class="columns is-centered">
             <div class="column content">
               <p>
-                This graph shows the distribution of spatial object parts amongst the three part-level skills of grasping, touching, and rotating an object.
+                The following graphs show the distribution of spatial and semantic object parts respectively amongst the three part-level skills of grasping, touching, and rotating an object.
               </p>
               <img src="./static/images/spatial_part_counts_among_skills.png"
+              class="image"
+              alt="Part counts among skills"/>
+              <img src="./static/images/semantic_part_counts_among_skills.png"
               class="image"
               alt="Part counts among skills"/>
             </div>
@@ -284,13 +287,16 @@
         <!--/ Interpolating. -->
 
         <!-- Re-rendering. -->
-        <h3 class="title is-4">Semantic Object Parts</h3>
+        <h3 class="title is-4">Part Counts</h3>
         <div class="content has-text-justified">
           <p>
-            This graph shows the distribution of semantic object parts amongst the three part-level skills of grasping, touching, and rotating an object.
+            The following bar graphs show the distributions of parts within each object in the dataset. The bar graphs have been split to show the unseen and seen obejct categories.
         </div>
         <div class="content has-text-centered">
-          <img src="./static/images/semantic_part_counts_among_skills.png"
+          <img src="./static/images/counts_of_parts_within_each_objectv2_seen.png"
+          class="image"
+          alt="Part counts among skills"/>
+          <img src="./static/images/counts_of_parts_within_each_objectv2_unseen.png"
           class="image"
           alt="Part counts among skills"/>
         </div>
@@ -310,7 +316,7 @@
           <p>
             There's a lot of excellent work that was introduced around the same time as ours.
           </p>
-          <p>
+          <!-- <p>
             <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
           </p>
           <p>
@@ -322,6 +328,9 @@
           </p>
           <p>
             There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p> -->
+          <p>
+            Coming soon!
           </p>
         </div>
       </div>
