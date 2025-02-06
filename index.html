@@ -123,7 +123,7 @@
            class="teaser-image"
            alt="PartInstruct teaser image"/>
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">PartInstruct</span> pipeline
+        <span class="dnerf"></span>An example fine-grained robot manipulation task in <strong>PartInstruct<strong></strong></span> 
       </h2>
     </div>
   </div>
@@ -226,7 +226,7 @@
               <p>
                 The following star plot shows the relative distribution of the number of episodes in each object category in the dataset.
               </p>
-              <img src="./static/images/distribution_of_object_category_episodes.png"
+              <img src="./static/images/figure_obj_distribution-1.png"
                    class="image"
                    alt="Distribution of object category episodes"/>
             </div>
@@ -243,12 +243,9 @@
           <div class="columns is-centered">
             <div class="column content">
               <p>
-                The following graphs show the distribution of spatial and semantic object parts respectively amongst the three part-level skills of grasping, touching, and rotating an object.
+                The following graphs show annotated parts grouped by object categories. Spatial part names are highlighted in light gray to distinguish them from semantic part names.
               </p>
-              <img src="./static/images/spatial_part_counts_among_skills.png"
-              class="image"
-              alt="Part counts among skills"/>
-              <img src="./static/images/semantic_part_counts_among_skills.png"
+              <img src="./static/images/figure_heatmap.png"
               class="image"
               alt="Part counts among skills"/>
             </div>
@@ -258,19 +255,31 @@
       </div>
     </div>
     <!--/ Matting. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Multimodal observations in PartGym</h2>
+              <div class="column content">
+              <p>
+                PartGym supports multimodal observations, including RGB images, depth maps, and scene point clouds (PCDs). It also provides object and part annotations, including object segmentations, 2D part segmentation for each object part (part mask), and 3D part segmentations on point clouds (part PCDs) for each object.
+              </p>
+              <img src="./static/images/figure_vision_modalities_simplified.png"
+              class="image"
+              alt="Part counts among skills"/>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Animation. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Interactive</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
+        <h2 class="title is-3">Interactive demo</h2>      
         <div class="content has-text-justified">
           <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
+            Here we provides a interactive demo to animate the task: "Touch the left of the bucket and then push it to the right". 
+            You can use the slider here to see every timestep between the initial and final state.
           </p>
         </div>
         <div class="columns is-vcentered interpolation-panel">
@@ -283,25 +292,43 @@
                    step="1" min="0" max="100" value="0" type="range">
           </div>
         </div>
-        <br/>
-        <!--/ Interpolating. -->
+      </div>
+    </div>
 
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Part Counts</h3>
+      <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Experiments</h2>    
+   
+      
         <div class="content has-text-justified">
           <p>
-            The following bar graphs show the distributions of parts within each object in the dataset. The bar graphs have been split to show the unseen and seen obejct categories.
+            To achieve general-purpose robot manipulation, there have been two common types of approaches: (1) end-to-end policy learning that directly maps observation and instruction to actions and (2) bi-level planning that first generates high-level plans (typically subgoals), then compute and execute the low-level action plans to achieve the subgoals. In our benchmark, we evaluate both types of approaches.
+          </p>
+              <figure>
+                <img src="./static/images/figure_bar_plot_with_background_new-1.png"
+                     class="image"
+                     alt="Part counts among skills" style="max-width: 65%;"/>
+                <figcaption>Success Rates of all baselines. The left group represents end-to-end learning policies, while the right group corresponds to bi-level planning models.</figcaption>
+              </figure>  
         </div>
-        <div class="content has-text-centered">
-          <img src="./static/images/counts_of_parts_within_each_objectv2_seen.png"
-          class="image"
-          alt="Part counts among skills"/>
-          <img src="./static/images/counts_of_parts_within_each_objectv2_unseen.png"
-          class="image"
-          alt="Part counts among skills"/>
+        <h3 class="title is-4">End-to-End Policy Learning</h3>      
+        <div class="content has-text-justified">
+          <p>
+            We trained the baselines DP, DP3, Act3D, and RVT2 from scratch and fine-tuned the pretrained baseline Octo on our training data. 
+          </p>
         </div>
-        <!--/ Re-rendering. -->
+        <h3 class="title is-4">Bi-level Planning</h3>      
+        <div class="content has-text-justified">
+          <p>
+            We hypothesize that it would be easier to train action policies with skill instruction annotations compared to directly training a policy for the whole task. Such low-level action policies can then be combined with a high-level planner that generates skill instructions given a task instruction to solve the manipulation task intended by the user. Specifically, the bi-level planner consists of two modules: (1) a high-level task planner and (2) a low-level action policy.</p>
 
+          <p> Below is a image illustrating our bi-level planning framework. The High-Level Task Planner generates a skill instruction as a subgoal for the low-level action policy based on the task instruction and the current observation. Given the subgoal described in the skill instruction, the low-level action policy then generates actions for achieving that subgoal. The high-level task planner updates the skill instruction once every n steps, while the low-level action policy updates the action at every step.</p>
+            <figure>
+              <img src="./static/images/figure_framework.png"
+                   class="image"
+                   alt="Part counts among skills"/>
+            </figure>
+        </div>
       </div>
     </div>
     <!--/ Animation. -->
