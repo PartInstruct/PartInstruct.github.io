@@ -35,6 +35,7 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -280,7 +281,7 @@
         <h2 class="title is-3">Interactive Demo</h2>      
         <div class="content has-text-justified">
           <p>
-            Here we provides a interactive demo to animate the task: <strong>"Touch the left of the bucket and then push it to the right".</strong>  
+            Here we provides a interactive demo to animate the task: <strong>"Push the bucket's left part, then release".</strong>  
             You can use the slider here to see every timestep between the initial and final state.
           </p>
         </div>
@@ -298,6 +299,68 @@
     </div>
 
     <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Problem Setup</h2>    
+        <div class="content has-text-justified">
+        <p>
+        A natural language instruction 
+        \( I_{\text{task}} \) describes a part-level instruction following task if it requires that a robot perform a fine-grained manipulation where the robot must interact with a list of object parts in a certain manner to achieve the intended goal \( g \). Critically, the relevant object parts and how the robot needs to interact with them are often not explicitly described in the instructions. Thus, the robot must learn to reason about relevant parts and plan how to manipulate them to perform the task successfully.
+        </p>
+
+        <p>
+        To define \( g \), we first establish a set of goal predicates that specify the states of the object, its parts, the robot's end effector, and their relationships. For example, 
+        \(\texttt{ON} (\text{obj}, \text{part}, \text{surface})\)
+        represents physical contact between an object part and a given surface;
+        \(
+        \texttt{FACING}(\text{obj}, \text{part}, \text{dir})
+        \)
+        indicates the orientation of an object part from a third-person perspective; and 
+        \(
+        \texttt{GRASPING}(\text{obj}, \text{part})
+        \)
+        denotes a "grasp" interaction between the object part and the robot's end effector.
+        </p>
+
+        <p>
+        Given these goal predicates, each task goal is defined by a set of goal predicates. Examples of tasks are presented in the task definition table. For instance, in a given task example, the goal is represented by the predicate set:
+        </p>
+
+        \[
+        \{
+        \texttt{GRASPING}(\text{bottle}, \sim\text{cap}), \quad
+        \texttt{FACING}(\text{bottle}, \text{cap}, \text{front}), \quad
+        \texttt{AT_POSITION}(\text{bottle},  \text{INIT_POS} + \text{VEC}(\text{UP}))
+        \}
+        \]
+
+        <p>
+        where \( \sim\text{cap} \) is any part other than the cap. Note that some tasks consist of multiple phases, where the next phase can only begin after completing the previous one, as the order of interactions is crucial for these tasks.
+        </p>
+
+        <p>
+        To develop an embodied agent capable of executing tasks defined by \( g \), we hypothesize that it would be beneficial to start with a set of base skills that can be combined to handle a wide range of fine-grained manipulation tasks. In particular, we consider five types of base skills:  
+        \( \texttt{grasp_part} \),  
+        \( \texttt{touch_part} \),  
+        \( \texttt{rotate_obj} \),  
+        \( \texttt{move_gripper} \), and  
+        \( \texttt{release_gripper} \).  
+        Each skill is parameterized by (1) the object part it interacts with and the type of interaction (e.g., touching or grasping), (2) the degree of rotation required for the part, and (3) the distance and direction in which the gripper or object should be moved. This information is summarized in a skill instruction \( I_{\text{skill}} \) associated with that skill.  
+        </p>
+        <p>
+        As illustrated in the interactive demo, a task given by an overall task instruction can be decomposed into a sequence of base skill executions, each described by a skill instruction. For example, in the task  
+        <i>“Push the bucket's left part, then release”</i>,  
+        the robot must execute three skills:  
+        (1) To "push" the bucket's left part, the robot first executes \( \texttt{touch_part}(\text{bucket}, \text{left}) \).  
+        (2) Then, it moves the end effector to the right using \( \texttt{move_gripper}(\text{right}) \).  
+        (3) Finally, the robot completes the task by executing \( \texttt{release_gripper}() \).  
+        We hypothesize that structuring fine-grained manipulation tasks into sequences of base skills can facilitate the training of hierarchical planning models to compose complex plans with base skills for long-horizon tasks that an end-to-end vision-language policy would struggle with.
+        </p>
+
+        </div>
+      </div>
+    </div>
+    
+        <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Comparison of PartInstruct with other benchmarks</h2>    
         <div class="content has-text-justified">
@@ -350,6 +413,10 @@ demonstrations, and whether these demonstrations include part-level annotations 
                    class="image"
                    alt="Part counts among skills" style="max-width: 100%;"/>
             </figure>
+          <p><strong>High-level Task Planner.</strong> We leverage a Vision Language Model (VLM) for high-level task planning. At step <span>\( t \)</span>, we prompt the VLM with the task instruction <span>\( I_\text{task} \)</span> to generate the skill instruction for the current step as the subgoal <span>\( sg_t \)</span>, i.e., <span>\( \pi_\text{VLM}(sg_t | o_t, I_\text{task}) \)</span>, where <span>\( o_t \)</span> is the observation at step <span>\( t \)</span>. We constrain the skill instructions to the space of base skills defined in the dataset, which is also specified in the prompt for the VLM. To facilitate decision-making, we also provide additional observations when prompting the VLM, such as RGB images of the workspace, robot states, etc. <span>\( sg_t \)</span> will be passed to the low-level action policy for execution and will be updated every <span>\( n \)</span> steps. Here, <span>\( n \)</span> is estimated by the typical length of a skill execution in the training set. </p>
+          <p><strong>Low-level Action Policy.</strong> The low-level action policy is a vision-language policy that generates low-level manipulation actions based on a subgoal and the current observation, i.e., <span>\( \pi(a_t | o_t, sg_t) \)</span>, where <span>\( a_t \)</span> is the action at step <span>\( t \)</span>. We can train such policies using the skill instructions annotated for training demonstrations in our dataset. </p>
+          <p>Here, we select the best-performing end-to-end policy learning baseline, DP3, to train the low-level action policy with object part segmentation as part of the input. In detail, for DP3, we use a part point cloud as an additional vision input. We first utilize a VLM, e.g. Florence-2 to ground the language onto the target part, then prompt Segment Anything Model 2 (SAM 2) to generate segmentation masks and track the object part in real-time. We then lift the 2D mask into 3D with the depth map using the pinhole camera model and camera intrinsics. To represent a 3D part mask, we append a binary mask channel to the original point cloud observation. This modified point cloud is encoded using an MLP, following the approach described in the original implementation. We refer to this action policy as <em>DP3-S</em>.</p>
+
         </div>
       </div>
     </div>
