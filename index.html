@@ -35,6 +35,19 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    /* Apply Fancy Fonts */
+    h1, h2.title {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+    }
+
+    h3.subtitle, h5.title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+    }
+  </style>
+
 </head>
 <body>
 
@@ -290,9 +303,9 @@
       <img src="./static/images/compare.png" class="image" alt="Part counts among skills" style="max-width: 100%;"/>
     </div>
     
-    <!-- Interactive Demo (untouched) -->
+    <!-- Interactive Demo -->
     <div class="content">
-      <h5 class="subtitle is-5">Interactive Demo</h5>
+      <h5 class="subtitle is-5">Interactive Demos</h5>
       <p>
         Here we provide an interactive demo to animate the task: <strong>"Push the bucket's left part, then release".</strong> You can use the slider here to see every timestep between the initial and final state.
       </p>
@@ -305,6 +318,22 @@
         </div>
       </div>
     </div>
+
+    <div class="content" style="display: flex; align-items: flex-start;">
+      <!-- Left Side: Paragraph -->
+      <div style="flex: 1; padding-right: 20px;">
+        <h5 class="subtitle is-5">Evaluation Protocol</h5>
+        <p>
+          To systematically evaluate model performance, we designed a five-level evaluation protocol, each of which evaluates a policy in one type of generalization. Namely, generalizability over object initial states (OS), novel object instances (OI), novel part combinations in the same task type (TP), novel task categories (TC), and novel object categories (OC).
+        </p>
+      </div>
+    
+      <!-- Right Side: Image -->
+      <div style="flex: 1; text-align: center;">
+        <img src="./static/images/evaluation.png" alt="Evaluation Protocol Table" style="max-width: 100%; height: auto; margin-top: 1.5em;">
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -326,13 +355,13 @@
             <figcaption>Success Rates of all baselines. The left group represents end-to-end learning policies, while the right group corresponds to bi-level planning models.</figcaption>
           </figure>
         </div>
-        <h5 class="title is-5">End-to-End Policy Learning</h5>
+        <h5 class="subtitle is-5"><strong>End-to-End Policy Learning</strong></h5>
         <div class="content has-text-justified">
           <p>
             We evaluate several state-of-the-art end-to-end robot manipulation policy learning methods, including DP, DP3, Act3D, RVT2 and Octo. Note that the original DP and DP3 models do not support language instruction inputs. To fit the setup of PartInstruct, we use a pre-trained T5 language encoder to get the language embedding, then concatenated it with other features as the observation condition for the denoising diffusion process.
           </p>
         </div>
-        <h5 class="title is-5">Bi-level Planning</h5>
+        <h5 class="subtitle is-5"><strong>Bi-level Planning</strong></h5>
         <div class="content has-text-justified">
           <p>
             We hypothesize that it would be easier to train policies with skill instructions compared to directly training a policy for the whole task. Such a <strong>low-level action policy</strong> can then be combined with a <strong>high-level task planner</strong> that generates skill instructions given a task instruction to solve the manipulation task. Below is a figure illustrating our bi-level planning framework.
@@ -354,21 +383,105 @@
   </div>
 </section>
 
-<!-- Qualitative Results -->
+<!-- Qualitative Results Section -->
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Qualitative Results</h2>
-        <div class="content has-text-justified">
-          <p>
-            In this work, we introduced PartInstruct, a large-scale benchmark designed to advance fine-grained robot manipulation using part-level instructions. By curating a diverse set of objects, tasks, and expert demonstrations, PartInstruct provides a foundation for training and evaluating robot manipulation models that require reasoning about object parts and their relationships with tasks. Our evaluations of state-of-the-art models highlight critical challenges in grounding part concepts and executing long-horizon tasks. With comprehensive experiments and ablation studies, our work provides key insights for future research, highlighting the need for further innovation in perception, reasoning, and planning to enable robots to effectively perform fine-grained, part-aware manipulation.
-          </p>
+    <h2 class="title is-3 has-text-weight-semibold">Qualitative Results</h2>
+
+    <!-- Video Grid (2x2) -->
+    <div class="columns is-multiline is-centered">
+      
+      <!-- Video 1 -->
+      <div class="column is-half">
+        <div class="video-container">
+          <h3 class="subtitle is-5 has-text-centered" style="font-style: italic;">
+            Test 3-2: Environment 1
+          </h3>
+          <div class="subtitle-bar" style="border-bottom: 2px solid #A9A9A9; width: 100%; margin: 8px 0;"></div>
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/test2_2_env_2_video.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="column is-half">
+        <div class="video-container">
+          <h3 class="subtitle is-5 has-text-centered" style="font-style: italic;">
+            Test 3-5: Environment 5 (Mug)
+          </h3>
+          <div class="subtitle-bar" style="border-bottom: 2px solid #A9A9A9; width: 100%; margin: 8px 0;"></div>
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/test3_2_env_1_video.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="column is-half">
+        <div class="video-container">
+          <h3 class="subtitle is-5 has-text-centered" style="font-style: italic;">
+            Test 2-2: Environment 2
+          </h3>
+          <div class="subtitle-bar" style="border-bottom: 2px solid #A9A9A9; width: 100%; margin: 8px 0;"></div>
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/test3_5_env_5_mug.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <!-- Video 4 -->
+      <div class="column is-half">
+        <div class="video-container">
+          <h3 class="subtitle is-5 has-text-centered" style="font-style: italic;">
+            Test 5-1: Episode 100472
+          </h3>
+          <div class="subtitle-bar" style="border-bottom: 2px solid #A9A9A9; width: 100%; margin: 8px 0;"></div>
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/test5_1_video_episode_100472.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
     </div>
-  
-    <!-- Conclusion -->
+
+    <h5 class="subtitle is-5"><strong>Comparison of End-to-End and Bi-level Episodes</strong></h5>
+
+    <!-- Smaller Title for Comparison Section -->
+    <h5 class="title is-5" style="margin-top: 40px;">placeholder texts</h5>
+    
+    <!-- Single Bar for Two Videos -->
+    <div class="comparison-bar" style="border-bottom: 2px solid #A9A9A9; width: 100%; margin: 8px 0 15px 0;"></div>
+
+    <!-- Video Row -->
+    <div class="columns is-centered">
+      
+      <!-- Video 1: DP3 -->
+      <div class="column is-half">
+        <div class="video-container">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/FAILED_compare_with_VLM_box.mp4" type="video/mp4">
+          </video>
+          <p class="caption has-text-centered" style="font-style: italic; margin-top: 5px;">DP3</p>
+        </div>
+      </div>
+
+      <!-- Video 2: Gemini-2.0 Flash+DP3-S -->
+      <div class="column is-half">
+        <div class="video-container">
+          <video autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/test4_13_video_box.mp4" type="video/mp4">
+          </video>
+          <p class="caption has-text-centered" style="font-style: italic; margin-top: 5px;">Gemini-2.0 Flash+DP3-S</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Conclusion Section -->
+<section class="section">
+  <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Conclusion</h2>
