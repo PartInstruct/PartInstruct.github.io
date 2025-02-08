@@ -1,532 +1,961 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="description"
-        content="PartInstruct is concerned with part-level instruction following for fine-grained robot manipulation">
-  <meta name="keywords" content="PartInstruct, Manipulate Anything">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PartInstruct: Part-level Instruction Following for Fine-grained Robot Manipulation</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="PartInstruct is concerned with part-level instruction following for fine-grained robot manipulation"
+    />
+    <meta name="keywords" content="PartInstruct, Manipulate Anything" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      PartInstruct: Part-level Instruction Following for Fine-grained Robot
+      Manipulation
+    </title>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-96FM6LQE7G"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-96FM6LQE7G');
-  </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-96FM6LQE7G"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-96FM6LQE7G");
+    </script>
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/partinstruct.png">
+    <link rel="stylesheet" href="./static/css/bulma.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="icon" href="./static/images/partinstruct.png" />
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <style>
-    /* Apply Fancy Fonts */
-    h1, h2.title {
-      font-family: 'Cinzel', serif;
-      font-weight: 700;
-    }
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <style>
+      /* Apply Fancy Fonts */
+      h1,
+      h2.title {
+        font-family: "Cinzel", serif;
+        font-weight: 700;
+      }
 
-    h3.subtitle, h5.title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 400;
-    }
-  </style>
+      h3.subtitle,
+      h5.title {
+        font-family: "Playfair Display", serif;
+        font-weight: 400;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    </nav>
 
-</head>
-<body>
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">PartInstruct: Part-level Instruction Following for Fine-grained Robot Manipulation</h1>
-          <div class="is-size-5 publication-authors">
-            <!-- Publication Links -->
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
             <div class="column has-text-centered">
-              <div class="publication-links">
-                <span class="link-block">
-                  <a href="about:blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
+              <h1 class="title is-1 publication-title">
+                PartInstruct: Part-level Instruction Following for Fine-grained
+                Robot Manipulation
+              </h1>
+              <div class="is-size-5 publication-authors">
+                <!-- Publication Links -->
+                <div class="column has-text-centered">
+                  <div class="publication-links">
+                    <span class="link-block">
+                      <a
+                        href="about:blank"
+                        class="external-link button is-normal is-rounded is-dark"
+                      >
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
                     </span>
-                    <span>Paper</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href="about:blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="ai ai-arxiv"></i>
+                    <span class="link-block">
+                      <a
+                        href="about:blank"
+                        class="external-link button is-normal is-rounded is-dark"
+                      >
+                        <span class="icon">
+                          <i class="ai ai-arxiv"></i>
+                        </span>
+                        <span>arXiv</span>
+                      </a>
                     </span>
-                    <span>arXiv</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href="about:blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-youtube"></i>
+                    <span class="link-block">
+                      <a
+                        href="about:blank"
+                        class="external-link button is-normal is-rounded is-dark"
+                      >
+                        <span class="icon">
+                          <i class="fab fa-youtube"></i>
+                        </span>
+                        <span>Video</span>
+                      </a>
                     </span>
-                    <span>Video</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href="about:blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
+                    <span class="link-block">
+                      <a
+                        href="about:blank"
+                        class="external-link button is-normal is-rounded is-dark"
+                      >
+                        <span class="icon">
+                          <i class="fab fa-github"></i>
+                        </span>
+                        <span>Code</span>
+                      </a>
                     </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href="about:blank" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="far fa-images"></i>
+                    <span class="link-block">
+                      <a
+                        href="about:blank"
+                        class="external-link button is-normal is-rounded is-dark"
+                      >
+                        <span class="icon">
+                          <i class="far fa-images"></i>
+                        </span>
+                        <span>Data</span>
+                      </a>
                     </span>
-                    <span>Data</span>
-                  </a>
-                </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="./static/images/figure_intro.png"
-           class="teaser-image"
-           alt="PartInstruct teaser image"/>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf"></span>An example fine-grained robot manipulation task in <strong>PartInstruct</strong>
-      </h2>
-    </div>
-  </div>
-</section>
-
-<!-- Abstract Section -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Fine-grained robot manipulation, such as lifting and rotating a bottle to display the label on the cap, requires robust reasoning about object parts and their relationships with intended tasks. Despite recent advances in training general-purpose robot manipulation policies guided by language instructions, there is a notable lack of large-scale datasets for fine-grained manipulation tasks with part-level instructions and diverse 3D object instances annotated with part-level labels.
-          </p>
-          <p>
-            In this work, we introduce PartInstruct, the first large-scale benchmark for both training and evaluating fine-grained robot manipulation models using part-level instructions. PartInstruct comprises 513 object instances across 14 categories, each annotated with part-level information, and 1302 fine-grained manipulation tasks organized into 16 task classes. Our training set consists of over 10,000 expert demonstrations synthesized in a 3D simulator, where each demonstration is paired with a high-level task instruction, a chain of basic part-based skill instructions, and ground-truth 3D information about the object and its parts. Additionally, we designed a comprehensive test suite to evaluate the generalizability of learned policies across new states, objects, and tasks.
-          </p>
-          <p>
-            We evaluated several state-of-the-art robot manipulation approaches including end-to-end vision-language policy learning and bi-level planning models on our benchmark. The experimental results reveal that current models struggle to robustly ground part concepts and predict actions in 3D space, and face challenges when manipulating object parts in long-horizon tasks.
-          </p>
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <img
+            src="./static/images/figure_intro.png"
+            class="teaser-image"
+            alt="PartInstruct teaser image"
+          />
+          <h2 class="subtitle has-text-centered">
+            <span class="dnerf"></span>An example fine-grained robot
+            manipulation task in <strong>PartInstruct</strong>
+          </h2>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Video Carousel -->
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item">
-          <video poster="" id="demo_1" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/66026_new.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair-tp">
-          <video poster="" id="demo_2" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/episode1215_frames.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-shiba">
-          <video poster="" id="demo_3" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/92059.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-fullbody">
-          <video poster="" id="demo_4" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/80332.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-blueshirt">
-          <video poster="" id="demo_5" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/95066.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-mask">
-          <video poster="" id="demo_6" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/10098.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-coffee">
-          <video poster="" id="demo_7" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/episode170165_frames.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Problem Setup -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Problem Setup</h2>    
-        <div class="content has-text-justified">
-          <p>
-            A natural language instruction 
-            \( I_{\text{task}} \) describes a part-level instruction following task if it requires that a robot perform a fine-grained manipulation where the robot must interact with a list of object parts in a certain manner to achieve the intended goal \( g \). Critically, the relevant object parts and how the robot needs to interact with them are often not explicitly described in the instructions. Thus, the robot must learn to reason about relevant parts and plan how to manipulate them to perform the task successfully.
-          </p>
-          <p>
-            To define \( g \), we first establish a set of goal predicates that specify the states of the object, its parts, the robot's end effector, and their relationships. For example, 
-            \(\texttt{ON} (\text{obj}, \text{part}, \text{surface})\)
-            represents physical contact between an object part and a given surface; 
-            \(\texttt{FACING}(\text{obj}, \text{part}, \text{dir})\)
-            indicates the orientation of an object part from a third-person perspective; and 
-            \(\texttt{GRASPING}(\text{obj}, \text{part})\)
-            denotes a "grasp" interaction between the object part and the robot's end effector.
-          </p>
-          <p>
-            Given these goal predicates, each task goal is defined by a set of goal predicates. Examples of tasks are presented in the task definition table. For instance, in a given task example, the goal is represented by the predicate set:
-          </p>
-          \[
-          \{
-          \texttt{GRASPING}(\text{bottle}, \sim\text{cap}), \quad
-          \texttt{FACING}(\text{bottle}, \text{cap}, \text{front}), \quad
-          \texttt{AT_POSITION}(\text{bottle},  \text{INIT_POS} + \text{VEC}(\text{UP}))
-          \}
-          \]
-          <p>
-            where \( \sim\text{cap} \) is any part other than the cap. Note that some tasks consist of multiple phases, where the next phase can only begin after completing the previous one, as the order of interactions is crucial for these tasks.
-          </p>
-          <p>
-            To develop an embodied agent capable of executing tasks defined by \( g \), we hypothesize that it would be beneficial to start with a set of base skills that can be combined to handle a wide range of fine-grained manipulation tasks. In particular, we consider five types of base skills:  
-            \( \texttt{grasp_part} \),  
-            \( \texttt{touch_part} \),  
-            \( \texttt{rotate_obj} \),  
-            \( \texttt{move_gripper} \), and  
-            \( \texttt{release_gripper} \).  
-            Each skill is parameterized by (1) the object part it interacts with and the type of interaction (e.g., touching or grasping), (2) the degree of rotation required for the part, and (3) the distance and direction in which the gripper or object should be moved. This information is summarized in a skill instruction \( I_{\text{skill}} \) associated with that skill.
-          </p>
-          <p>
-            As illustrated in the interactive demo, a task given by an overall task instruction can be decomposed into a sequence of base skill executions, each described by a skill instruction. For example, in the task  
-            <i>“Push the bucket's left part, then release”</i>,  
-            the robot must execute three skills:  
-            (1) To "push" the bucket's left part, the robot first executes \( \texttt{touch_part}(\text{bucket}, \text{left}) \).  
-            (2) Then, it moves the end effector to the right using \( \texttt{move_gripper}(\text{right}) \).  
-            (3) Finally, the robot completes the task by executing \( \texttt{release_gripper}() \).
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- New Section: PartGym -->
-<section class="section" id="partgym">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">PartGym: 3D Simulation for Part-level Manipulation</h2>
-    <!-- Multimodal Observations -->
-    <div class="content">
-      <p>
-        <strong>Multimodal Observations in PartGym</strong>. PartGym supports multimodal observations, including RGB images, depth maps, scene point clouds (PCDs). It also provides object masks, 2D part masks, 3D object PCDs, and 3D part PCDs for each object.
-      </p>
-      <img src="./static/images/figure_vision_modalities_simplified.png" class="image" alt="Modality figure"/>
-    </div>
-    
-    <!-- Object Categories & Object Parts -->
-    <div class="content">
-      <div class="columns">
-        <div class="column">
-          <div class="content has-text-centered">
-            <h5 class="title is-5 has-text-centered">Object Categories</h5>
-            <p>The following star plot shows the relative distribution of the number of episodes in each object category in the dataset.</p>
-            <img src="./static/images/figure_obj_distribution-1.png" class="image" alt="Distribution of object category episodes" style="max-width: 95%;"/>
-          </div>
-        </div>
-        <div class="column">
-          <div class="content has-text-centered">
-            <h5 class="title is-5 has-text-centered">Object Parts</h5>
-            <p>The following graphs show annotated parts grouped by object categories. Spatial part names are highlighted in light gray.</p>
-            <img src="./static/images/figure_heatmap.png" class="image" alt="Part counts among skills" style="max-width: 110%;"/>
+    <!-- Abstract Section -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                Fine-grained robot manipulation, such as lifting and rotating a
+                bottle to display the label on the cap, requires robust
+                reasoning about object parts and their relationships with
+                intended tasks. Despite recent advances in training
+                general-purpose robot manipulation policies guided by language
+                instructions, there is a notable lack of large-scale datasets
+                for fine-grained manipulation tasks with part-level instructions
+                and diverse 3D object instances annotated with part-level
+                labels.
+              </p>
+              <p>
+                In this work, we introduce PartInstruct, the first large-scale
+                benchmark for both training and evaluating fine-grained robot
+                manipulation models using part-level instructions. PartInstruct
+                comprises 513 object instances across 14 categories, each
+                annotated with part-level information, and 1302 fine-grained
+                manipulation tasks organized into 16 task classes. Our training
+                set consists of over 10,000 expert demonstrations synthesized in
+                a 3D simulator, where each demonstration is paired with a
+                high-level task instruction, a chain of basic part-based skill
+                instructions, and ground-truth 3D information about the object
+                and its parts. Additionally, we designed a comprehensive test
+                suite to evaluate the generalizability of learned policies
+                across new states, objects, and tasks.
+              </p>
+              <p>
+                We evaluated several state-of-the-art robot manipulation
+                approaches including end-to-end vision-language policy learning
+                and bi-level planning models on our benchmark. The experimental
+                results reveal that current models struggle to robustly ground
+                part concepts and predict actions in 3D space, and face
+                challenges when manipulating object parts in long-horizon tasks.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- New Section: PartInstruct Benchmark -->
-<section class="section" id="partinstruct">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">PartInstruct: Benchmark for Part-level Instruction Following</h2>
-    
-    <!-- Comparison of Benchmarks -->
-    <div class="content">
-      <p>
-        <strong>Comparison of PartInstruct with Other Benchmarks</strong>. We compared PartInstruct with existing tabletop robot manipulation benchmarks based on: the number of distinctive part-level instructions, part labels, part-level tasks, availability of training demonstrations, and whether these demonstrations include part-level annotations such as 2D and 3D segmentation masks.
-      </p>
-      <img src="./static/images/compare.png" class="image" alt="Part counts among skills" style="max-width: 100%;"/>
-    </div>
-    
-    <!-- Interactive Demo -->
-    <div class="content">
-      <h5 class="subtitle is-5">Interactive Demos</h5>
-      <p>
-        Here we provide an interactive demo to animate the task: <strong>"Push the bucket's left part, then release".</strong> You can use the slider here to see every timestep between the initial and final state.
-      </p>
-      <div class="columns is-vcentered interpolation-panel">
-        <div class="column interpolation-video-column">
-          <div id="interpolation-image-wrapper">
-            Loading...
+    <!-- Video Carousel -->
+    <section class="hero is-light is-small">
+      <div class="hero-body">
+        <div class="container">
+          <div id="results-carousel" class="carousel results-carousel">
+            <div class="item">
+              <video
+                poster=""
+                id="demo_1"
+                autoplay
+                controls
+                muted
+                loop
+                playsinline
+                height="100%"
+              >
+                <source src="./static/videos/66026_new.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="item item-chair-tp">
+              <video
+                poster=""
+                id="demo_2"
+                autoplay
+                controls
+                muted
+                loop
+                playsinline
+                height="100%"
+              >
+                <source
+                  src="./static/videos/episode1215_frames.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+            <div class="item item-shiba">
+              <video
+                poster=""
+                id="demo_3"
+                autoplay
+                controls
+                muted
+                loop
+                playsinline
+                height="100%"
+              >
+                <source src="./static/videos/92059.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="item item-fullbody">
+              <video
+                poster=""
+                id="demo_4"
+                autoplay
+                controls
+                muted
+                loop
+                playsinline
+                height="100%"
+              >
+                <source src="./static/videos/80332.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="item item-blueshirt">
+              <video
+                poster=""
+                id="demo_5"
+                autoplay
+                controls
+                muted
+                loop
+                playsinline
+                height="100%"
+              >
+                <source src="./static/videos/95066.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="item item-mask">
+              <video
+                poster=""
+                id="demo_6"
+                autoplay
+                controls
+                muted
+                loop
+                playsinline
+                height="100%"
+              >
+                <source src="./static/videos/10098.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="item item-coffee">
+              <video
+                poster=""
+                id="demo_7"
+                autoplay
+                controls
+                muted
+                loop
+                playsinline
+                height="100%"
+              >
+                <source
+                  src="./static/videos/episode170165_frames.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
           </div>
-          <input class="slider is-fullwidth is-large is-info" id="interpolation-slider" step="1" min="0" max="100" value="0" type="range">
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="content" style="display: flex; align-items: flex-start;">
-      <!-- Left Side: Paragraph -->
-      <div style="flex: 1; padding-right: 20px;">
-        <h5 class="subtitle is-5">Evaluation Protocol</h5>
-        <p>
-          To systematically evaluate model performance, we designed a five-level evaluation protocol, each of which evaluates a policy in one type of generalization. Namely, generalizability over object initial states (OS), novel object instances (OI), novel part combinations in the same task type (TP), novel task categories (TC), and novel object categories (OC).
-        </p>
-      </div>
-    
-      <!-- Right Side: Image -->
-      <div style="flex: 1; text-align: center;">
-        <img src="./static/images/evaluation.png" alt="Evaluation Protocol Table" style="max-width: 100%; height: auto; margin-top: 1.5em;">
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- Remaining Content -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Experiments -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Experiments</h2>
-        <div class="content has-text-justified">
-          <p>
-            In our benchmark, we evaluate two types of approaches to achieve general-purpose robot manipulation: (1) end-to-end policy learning that directly maps observation and instruction to actions and (2) bi-level planning that first generates high-level plans (typically subgoals), then compute and execute the low-level action plans to achieve the subgoals.
-          </p>
-          <figure>
-            <img src="./static/images/figure_bar_plot_with_background_new-1.png"
-                 class="image"
-                 alt="Part counts among skills" style="max-width: 85%;"/>
-            <figcaption>Success Rates of all baselines. The left group represents end-to-end learning policies, while the right group corresponds to bi-level planning models.</figcaption>
-          </figure>
-        </div>
-        <h5 class="subtitle is-5"><strong>End-to-End Policy Learning</strong></h5>
-        <div class="content has-text-justified">
-          <p>
-            We evaluate several state-of-the-art end-to-end robot manipulation policy learning methods, including DP, DP3, Act3D, RVT2 and Octo. Note that the original DP and DP3 models do not support language instruction inputs. To fit the setup of PartInstruct, we use a pre-trained T5 language encoder to get the language embedding, then concatenated it with other features as the observation condition for the denoising diffusion process.
-          </p>
-        </div>
-        <h5 class="subtitle is-5"><strong>Bi-level Planning</strong></h5>
-        <div class="content has-text-justified">
-          <p>
-            We hypothesize that it would be easier to train policies with skill instructions compared to directly training a policy for the whole task. Such a <strong>low-level action policy</strong> can then be combined with a <strong>high-level task planner</strong> that generates skill instructions given a task instruction to solve the manipulation task. Below is a figure illustrating our bi-level planning framework.
-          </p>
-          <figure>
-            <img src="./static/images/figure_framework.png"
-                 class="image"
-                 alt="Part counts among skills" style="max-width: 105%;"/>
-          </figure>
-          <p>
-            <strong>High-level Task Planner.</strong> We leverage a Vision Language Model (VLM) for high-level task planning. At step <span>\( t \)</span>, we prompt the VLM with the task instruction <span>\( I_\text{task} \)</span> to generate the skill instruction for the current step as the subgoal <span>\( sg_t \)</span>, i.e., <span>\( \pi_\text{VLM}(sg_t | o_t, I_\text{task}) \)</span>, where <span>\( o_t \)</span> is the observation at step <span>\( t \)</span>. 
-          </p>
-          <p>
-            <strong>Low-level Action Policy.</strong> The low-level action policy is a vision-language policy that generates manipulation actions based on a subgoal and the current observation, i.e., <span>\( \pi(a_t | o_t, sg_t) \)</span>, where <span>\( a_t \)</span> is the action at step <span>\( t \)</span>. We can train such policies using the skill instructions annotated for training demonstrations in our dataset.  Here, we select the best-performing end-to-end policy learning baseline, DP3, to train such policy with object part segmentation as part of the input, which we refer to as <em>DP3-S</em>.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Qualitative Results Section -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-weight-semibold">Qualitative Results</h2>
-
-    <!-- Video Grid (2x2) -->
-    <div class="columns is-multiline is-centered">
-      
-      <!-- Video 1 -->
-      <div class="column is-half">
-        <div class="video-container">
-          <h3 class="subtitle is-5 has-text-centered" style="font-style: italic;">
-            Test 3-2: Environment 1
-          </h3>
-          <div class="subtitle-bar" style="border-bottom: 2px solid #A9A9A9; width: 100%; margin: 8px 0;"></div>
-          <video autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/test2_2_env_2_video.mp4" type="video/mp4">
-          </video>
+    <!-- Problem Setup -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">Problem Setup</h2>
+            <div class="content has-text-justified">
+              <p>
+                A natural language instruction \( I_{\text{task}} \) describes a
+                part-level instruction following task if it requires that a
+                robot perform a fine-grained manipulation where the robot must
+                interact with a list of object parts in a certain manner to
+                achieve the intended goal \( g \). Critically, the relevant
+                object parts and how the robot needs to interact with them are
+                often not explicitly described in the instructions. Thus, the
+                robot must learn to reason about relevant parts and plan how to
+                manipulate them to perform the task successfully.
+              </p>
+              <p>
+                To define \( g \), we first establish a set of goal predicates
+                that specify the states of the object, its parts, the robot's
+                end effector, and their relationships. For example,
+                \(\texttt{ON} (\text{obj}, \text{part}, \text{surface})\)
+                represents physical contact between an object part and a given
+                surface; \(\texttt{FACING}(\text{obj}, \text{part},
+                \text{dir})\) indicates the orientation of an object part from a
+                third-person perspective; and \(\texttt{GRASPING}(\text{obj},
+                \text{part})\) denotes a "grasp" interaction between the object
+                part and the robot's end effector.
+              </p>
+              <p>
+                Given these goal predicates, each task goal is defined by a set
+                of goal predicates. Examples of tasks are presented in the task
+                definition table. For instance, in a given task example, the
+                goal is represented by the predicate set:
+              </p>
+              \[ \{ \texttt{GRASPING}(\text{bottle}, \sim\text{cap}), \quad
+              \texttt{FACING}(\text{bottle}, \text{cap}, \text{front}), \quad
+              \texttt{AT_POSITION}(\text{bottle}, \text{INIT_POS} +
+              \text{VEC}(\text{UP})) \} \]
+              <p>
+                where \( \sim\text{cap} \) is any part other than the cap. Note
+                that some tasks consist of multiple phases, where the next phase
+                can only begin after completing the previous one, as the order
+                of interactions is crucial for these tasks.
+              </p>
+              <p>
+                To develop an embodied agent capable of executing tasks defined
+                by \( g \), we hypothesize that it would be beneficial to start
+                with a set of base skills that can be combined to handle a wide
+                range of fine-grained manipulation tasks. In particular, we
+                consider five types of base skills: \( \texttt{grasp_part} \),
+                \( \texttt{touch_part} \), \( \texttt{rotate_obj} \), \(
+                \texttt{move_gripper} \), and \( \texttt{release_gripper} \).
+                Each skill is parameterized by (1) the object part it interacts
+                with and the type of interaction (e.g., touching or grasping),
+                (2) the degree of rotation required for the part, and (3) the
+                distance and direction in which the gripper or object should be
+                moved. This information is summarized in a skill instruction \(
+                I_{\text{skill}} \) associated with that skill.
+              </p>
+              <p>
+                As illustrated in the interactive demo, a task given by an
+                overall task instruction can be decomposed into a sequence of
+                base skill executions, each described by a skill instruction.
+                For example, in the task
+                <i>“Push the bucket's left part, then release”</i>, the robot
+                must execute three skills: (1) To "push" the bucket's left part,
+                the robot first executes \( \texttt{touch_part}(\text{bucket},
+                \text{left}) \). (2) Then, it moves the end effector to the
+                right using \( \texttt{move_gripper}(\text{right}) \). (3)
+                Finally, the robot completes the task by executing \(
+                \texttt{release_gripper}() \).
+              </p>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Video 2 -->
-      <div class="column is-half">
-        <div class="video-container">
-          <h3 class="subtitle is-5 has-text-centered" style="font-style: italic;">
-            Test 3-5: Environment 5 (Mug)
-          </h3>
-          <div class="subtitle-bar" style="border-bottom: 2px solid #A9A9A9; width: 100%; margin: 8px 0;"></div>
-          <video autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/test3_2_env_1_video.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-
-      <!-- Video 3 -->
-      <div class="column is-half">
-        <div class="video-container">
-          <h3 class="subtitle is-5 has-text-centered" style="font-style: italic;">
-            Test 2-2: Environment 2
-          </h3>
-          <div class="subtitle-bar" style="border-bottom: 2px solid #A9A9A9; width: 100%; margin: 8px 0;"></div>
-          <video autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/test3_5_env_5_mug.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-
-      <!-- Video 4 -->
-      <div class="column is-half">
-        <div class="video-container">
-          <h3 class="subtitle is-5 has-text-centered" style="font-style: italic;">
-            Test 5-1: Episode 100472
-          </h3>
-          <div class="subtitle-bar" style="border-bottom: 2px solid #A9A9A9; width: 100%; margin: 8px 0;"></div>
-          <video autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/test5_1_video_episode_100472.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-
-    <h5 class="subtitle is-5"><strong>Comparison of End-to-End and Bi-level Episodes</strong></h5>
-
-    <!-- Smaller Title for Comparison Section -->
-    <h5 class="title is-5" style="margin-top: 40px;">placeholder texts</h5>
-    
-    <!-- Single Bar for Two Videos -->
-    <div class="comparison-bar" style="border-bottom: 2px solid #A9A9A9; width: 100%; margin: 8px 0 15px 0;"></div>
-
-    <!-- Video Row -->
-    <div class="columns is-centered">
-      
-      <!-- Video 1: DP3 -->
-      <div class="column is-half">
-        <div class="video-container">
-          <video autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/FAILED_compare_with_VLM_box.mp4" type="video/mp4">
-          </video>
-          <p class="caption has-text-centered" style="font-style: italic; margin-top: 5px;">DP3</p>
-        </div>
-      </div>
-
-      <!-- Video 2: Gemini-2.0 Flash+DP3-S -->
-      <div class="column is-half">
-        <div class="video-container">
-          <video autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/test4_13_video_box.mp4" type="video/mp4">
-          </video>
-          <p class="caption has-text-centered" style="font-style: italic; margin-top: 5px;">Gemini-2.0 Flash+DP3-S</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Conclusion Section -->
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Conclusion</h2>
-        <div class="content has-text-justified">
-          <p>
-            In this work, we introduced PartInstruct, a large-scale benchmark designed to advance fine-grained robot manipulation using part-level instructions. By curating a diverse set of objects, tasks, and expert demonstrations, PartInstruct provides a foundation for training and evaluating robot manipulation models that require reasoning about object parts and their relationships with tasks. Our evaluations of state-of-the-art models highlight critical challenges in grounding part concepts and executing long-horizon tasks. With comprehensive experiments and ablation studies, our work provides key insights for future research, highlighting the need for further innovation in perception, reasoning, and planning to enable robots to effectively perform fine-grained, part-aware manipulation.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BibTeX -->
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>Coming Soon</code></pre>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link" href="./static/videos/partinstruct_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="about:blank" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-8">
+    <!-- New Section: PartGym -->
+    <section class="section" id="partgym">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">
+          PartGym: 3D Simulation for Part-level Manipulation
+        </h2>
+        <!-- Multimodal Observations -->
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            <strong>Multimodal Observations in PartGym</strong>. PartGym
+            supports multimodal observations, including RGB images, depth maps,
+            scene point clouds (PCDs). It also provides object masks, 2D part
+            masks, 3D object PCDs, and 3D part PCDs for each object.
           </p>
-          <p>
-            This website was made possible thanks to the incredibly hard work of the team behind the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> website.
-          </p>
+          <img
+            src="./static/images/figure_vision_modalities_simplified.png"
+            class="image"
+            alt="Modality figure"
+          />
+        </div>
+
+        <!-- Object Categories & Object Parts -->
+        <div class="content">
+          <div class="columns">
+            <div class="column">
+              <div class="content has-text-centered">
+                <h5 class="title is-5 has-text-centered">Object Categories</h5>
+                <p>
+                  The following star plot shows the relative distribution of the
+                  number of episodes in each object category in the dataset.
+                </p>
+                <img
+                  src="./static/images/figure_obj_distribution-1.png"
+                  class="image"
+                  alt="Distribution of object category episodes"
+                  style="max-width: 95%"
+                />
+              </div>
+            </div>
+            <div class="column">
+              <div class="content has-text-centered">
+                <h5 class="title is-5 has-text-centered">Object Parts</h5>
+                <p>
+                  The following graphs show annotated parts grouped by object
+                  categories. Spatial part names are highlighted in light gray.
+                </p>
+                <img
+                  src="./static/images/figure_heatmap.png"
+                  class="image"
+                  alt="Part counts among skills"
+                  style="max-width: 110%"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</footer>
+    </section>
 
-</body>
+    <!-- New Section: PartInstruct Benchmark -->
+    <section class="section" id="partinstruct">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3">
+          PartInstruct: Benchmark for Part-level Instruction Following
+        </h2>
+
+        <!-- Comparison of Benchmarks -->
+        <div class="content">
+          <p>
+            <strong>Comparison of PartInstruct with Other Benchmarks</strong>.
+            We compared PartInstruct with existing tabletop robot manipulation
+            benchmarks based on: the number of distinctive part-level
+            instructions, part labels, part-level tasks, availability of
+            training demonstrations, and whether these demonstrations include
+            part-level annotations such as 2D and 3D segmentation masks.
+          </p>
+          <img
+            src="./static/images/compare.png"
+            class="image"
+            alt="Part counts among skills"
+            style="max-width: 100%"
+          />
+        </div>
+
+        <!-- Interactive Demo -->
+        <div class="content">
+          <h5 class="subtitle is-5">Interactive Demos</h5>
+          <p>
+            Here we provide an interactive demo to animate the task:
+            <strong>"Push the bucket's left part, then release".</strong> You
+            can use the slider here to see every timestep between the initial
+            and final state.
+          </p>
+          <div class="columns is-vcentered interpolation-panel">
+            <div class="column interpolation-video-column">
+              <div id="interpolation-image-wrapper">Loading...</div>
+              <input
+                class="slider is-fullwidth is-large is-info"
+                id="interpolation-slider"
+                step="1"
+                min="0"
+                max="100"
+                value="0"
+                type="range"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="content" style="display: flex; align-items: flex-start">
+          <!-- Left Side: Paragraph -->
+          <div style="flex: 1; padding-right: 20px">
+            <h5 class="subtitle is-5">Evaluation Protocol</h5>
+            <p>
+              To systematically evaluate model performance, we designed a
+              five-level evaluation protocol, each of which evaluates a policy
+              in one type of generalization. Namely, generalizability over
+              object initial states (OS), novel object instances (OI), novel
+              part combinations in the same task type (TP), novel task
+              categories (TC), and novel object categories (OC).
+            </p>
+          </div>
+
+          <!-- Right Side: Image -->
+          <div style="flex: 1; text-align: center">
+            <img
+              src="./static/images/evaluation.png"
+              alt="Evaluation Protocol Table"
+              style="max-width: 100%; height: auto; margin-top: 1.5em"
+            />
+          </div>
+        </div>
+
+        <div class="content" style="display: flex; align-items: flex-start">
+          <!-- Left Side: Paragraph -->
+          <div style="flex: 1; text-align: center">
+            <figure style="transform: translateX(10px)">
+              <img
+                src="./static/images/vis/image_1.png"
+                alt="Evaluation Protocol Table"
+                style="max-width: 120%"
+              />
+              <figcaption>Left: Training set. Right: Test 1(OS).</figcaption>
+            </figure>
+          </div>
+
+          <!-- Right Side: Image -->
+          <div style="flex: 1; text-align: center">
+            <figure style="transform: translateX(-10px)">
+              <img
+                src="./static/images/vis/image_2.png"
+                alt="Evaluation Protocol Table"
+                style="max-width: 120%"
+              />
+              <figcaption>Left: Training set. Right: Test 2(OI).</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="container is-max-desktop">
+        <!-- Experiments -->
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <div class="content has-text-justified">
+              <figure>
+                <img
+                  src="./static/images/vis/image_3_new.png"
+                  class="image"
+                  alt="Part counts among skills"
+                  style="max-width: 75%; height: auto; margin-top: 1.5em"
+                />
+                <figcaption>Above: Training set. Below: Test 3(TP).</figcaption>
+              </figure>
+
+              <figure>
+                <img
+                  src="./static/images/vis/image_4_new.png"
+                  class="image"
+                  alt="Part counts among skills"
+                  style="max-width: 80%; height: auto; margin-top: 1.5em"
+                />
+                <figcaption>Above: Training set. Below: Test 4(TC).</figcaption>
+              </figure>
+              <figure>
+                <img
+                  src="./static/images/vis/image_5.png"
+                  class="image"
+                  alt="Part counts among skills"
+                  style="max-width: 65%"
+                />
+                <figcaption>Left: Training set. Right: Test 5(OC).</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Remaining Content -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <!-- Experiments -->
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">Experiments</h2>
+            <div class="content has-text-justified">
+              <p>
+                In our benchmark, we evaluate two types of approaches to achieve
+                general-purpose robot manipulation: (1) end-to-end policy
+                learning that directly maps observation and instruction to
+                actions and (2) bi-level planning that first generates
+                high-level plans (typically subgoals), then compute and execute
+                the low-level action plans to achieve the subgoals.
+              </p>
+              <figure>
+                <img
+                  src="./static/images/figure_bar_plot_with_background_new-1.png"
+                  class="image"
+                  alt="Part counts among skills"
+                  style="max-width: 85%"
+                />
+                <figcaption>
+                  Success Rates of all baselines. The left group represents
+                  end-to-end learning policies, while the right group
+                  corresponds to bi-level planning models.
+                </figcaption>
+              </figure>
+            </div>
+            <h5 class="subtitle is-5">
+              <strong>End-to-End Policy Learning</strong>
+            </h5>
+            <div class="content has-text-justified">
+              <p>
+                We evaluate several state-of-the-art end-to-end robot
+                manipulation policy learning methods, including DP, DP3, Act3D,
+                RVT2 and Octo. Note that the original DP and DP3 models do not
+                support language instruction inputs. To fit the setup of
+                PartInstruct, we use a pre-trained T5 language encoder to get
+                the language embedding, then concatenated it with other features
+                as the observation condition for the denoising diffusion
+                process.
+              </p>
+            </div>
+            <h5 class="subtitle is-5"><strong>Bi-level Planning</strong></h5>
+            <div class="content has-text-justified">
+              <p>
+                We hypothesize that it would be easier to train policies with
+                skill instructions compared to directly training a policy for
+                the whole task. Such a
+                <strong>low-level action policy</strong> can then be combined
+                with a <strong>high-level task planner</strong> that generates
+                skill instructions given a task instruction to solve the
+                manipulation task. Below is a figure illustrating our bi-level
+                planning framework.
+              </p>
+              <figure>
+                <img
+                  src="./static/images/figure_framework.png"
+                  class="image"
+                  alt="Part counts among skills"
+                  style="max-width: 105%"
+                />
+              </figure>
+              <p>
+                <strong>High-level Task Planner.</strong> We leverage a Vision
+                Language Model (VLM) for high-level task planning. At step
+                <span>\( t \)</span>, we prompt the VLM with the task
+                instruction <span>\( I_\text{task} \)</span> to generate the
+                skill instruction for the current step as the subgoal
+                <span>\( sg_t \)</span>, i.e.,
+                <span>\( \pi_\text{VLM}(sg_t | o_t, I_\text{task}) \)</span>,
+                where <span>\( o_t \)</span> is the observation at step
+                <span>\( t \)</span>.
+              </p>
+              <p>
+                <strong>Low-level Action Policy.</strong> The low-level action
+                policy is a vision-language policy that generates manipulation
+                actions based on a subgoal and the current observation, i.e.,
+                <span>\( \pi(a_t | o_t, sg_t) \)</span>, where
+                <span>\( a_t \)</span> is the action at step
+                <span>\( t \)</span>. We can train such policies using the skill
+                instructions annotated for training demonstrations in our
+                dataset. Here, we select the best-performing end-to-end policy
+                learning baseline, DP3, to train such policy with object part
+                segmentation as part of the input, which we refer to as
+                <em>DP3-S</em>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Qualitative Results Section -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-weight-semibold">Qualitative Results</h2>
+
+        <!-- Video Grid (2x2) -->
+        <div class="columns is-multiline is-centered">
+          <!-- Video 1 -->
+          <div class="column is-half">
+            <div class="video-container">
+              <h3
+                class="subtitle is-5 has-text-centered"
+                style="font-style: italic"
+              >
+                Test 3-2: Environment 1
+              </h3>
+              <div
+                class="subtitle-bar"
+                style="
+                  border-bottom: 2px solid #a9a9a9;
+                  width: 100%;
+                  margin: 8px 0;
+                "
+              ></div>
+              <video autoplay controls muted loop playsinline width="100%">
+                <source
+                  src="./static/videos/test2_2_env_2_video.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="column is-half">
+            <div class="video-container">
+              <h3
+                class="subtitle is-5 has-text-centered"
+                style="font-style: italic"
+              >
+                Test 3-5: Environment 5 (Mug)
+              </h3>
+              <div
+                class="subtitle-bar"
+                style="
+                  border-bottom: 2px solid #a9a9a9;
+                  width: 100%;
+                  margin: 8px 0;
+                "
+              ></div>
+              <video autoplay controls muted loop playsinline width="100%">
+                <source
+                  src="./static/videos/test3_2_env_1_video.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="column is-half">
+            <div class="video-container">
+              <h3
+                class="subtitle is-5 has-text-centered"
+                style="font-style: italic"
+              >
+                Test 2-2: Environment 2
+              </h3>
+              <div
+                class="subtitle-bar"
+                style="
+                  border-bottom: 2px solid #a9a9a9;
+                  width: 100%;
+                  margin: 8px 0;
+                "
+              ></div>
+              <video autoplay controls muted loop playsinline width="100%">
+                <source
+                  src="./static/videos/test3_5_env_5_mug.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </div>
+
+          <!-- Video 4 -->
+          <div class="column is-half">
+            <div class="video-container">
+              <h3
+                class="subtitle is-5 has-text-centered"
+                style="font-style: italic"
+              >
+                Test 5-1: Episode 100472
+              </h3>
+              <div
+                class="subtitle-bar"
+                style="
+                  border-bottom: 2px solid #a9a9a9;
+                  width: 100%;
+                  margin: 8px 0;
+                "
+              ></div>
+              <video autoplay controls muted loop playsinline width="100%">
+                <source
+                  src="./static/videos/test5_1_video_episode_100472.mp4"
+                  type="video/mp4"
+                />
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <h5 class="subtitle is-5">
+          <strong>Comparison of End-to-End and Bi-level Episodes</strong>
+        </h5>
+
+        <!-- Smaller Title for Comparison Section -->
+        <h5 class="title is-5" style="margin-top: 40px">placeholder texts</h5>
+
+        <!-- Single Bar for Two Videos -->
+        <div
+          class="comparison-bar"
+          style="
+            border-bottom: 2px solid #a9a9a9;
+            width: 100%;
+            margin: 8px 0 15px 0;
+          "
+        ></div>
+
+        <!-- Video Row -->
+        <div class="columns is-centered">
+          <!-- Video 1: DP3 -->
+          <div class="column is-half">
+            <div class="video-container">
+              <video autoplay controls muted loop playsinline width="100%">
+                <source
+                  src="./static/videos/FAILED_compare_with_VLM_box.mp4"
+                  type="video/mp4"
+                />
+              </video>
+              <p
+                class="caption has-text-centered"
+                style="font-style: italic; margin-top: 5px"
+              >
+                DP3
+              </p>
+            </div>
+          </div>
+
+          <!-- Video 2: Gemini-2.0 Flash+DP3-S -->
+          <div class="column is-half">
+            <div class="video-container">
+              <video autoplay controls muted loop playsinline width="100%">
+                <source
+                  src="./static/videos/test4_13_video_box.mp4"
+                  type="video/mp4"
+                />
+              </video>
+              <p
+                class="caption has-text-centered"
+                style="font-style: italic; margin-top: 5px"
+              >
+                Gemini-2.0 Flash+DP3-S
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conclusion Section -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">Conclusion</h2>
+            <div class="content has-text-justified">
+              <p>
+                In this work, we introduced PartInstruct, a large-scale
+                benchmark designed to advance fine-grained robot manipulation
+                using part-level instructions. By curating a diverse set of
+                objects, tasks, and expert demonstrations, PartInstruct provides
+                a foundation for training and evaluating robot manipulation
+                models that require reasoning about object parts and their
+                relationships with tasks. Our evaluations of state-of-the-art
+                models highlight critical challenges in grounding part concepts
+                and executing long-horizon tasks. With comprehensive experiments
+                and ablation studies, our work provides key insights for future
+                research, highlighting the need for further innovation in
+                perception, reasoning, and planning to enable robots to
+                effectively perform fine-grained, part-aware manipulation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BibTeX -->
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>Coming Soon</code></pre>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <a class="icon-link" href="./static/videos/partinstruct_paper.pdf">
+            <i class="fas fa-file-pdf"></i>
+          </a>
+          <a
+            class="icon-link"
+            href="about:blank"
+            class="external-link"
+            disabled
+          >
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                This website is licensed under a
+                <a
+                  rel="license"
+                  href="http://creativecommons.org/licenses/by-sa/4.0/"
+                  >Creative Commons Attribution-ShareAlike 4.0 International
+                  License</a
+                >.
+              </p>
+              <p>
+                This website was made possible thanks to the incredibly hard
+                work of the team behind the
+                <a href="https://github.com/nerfies/nerfies.github.io"
+                  >Nerfies</a
+                >
+                website.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
