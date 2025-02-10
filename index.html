@@ -193,15 +193,18 @@
                 instructions, there is a notable lack of large-scale datasets
                 for fine-grained manipulation tasks with part-level instructions
                 and diverse 3D object instances annotated with part-level
-                labels. We introduce PartInstruct, the first benchmark for training and evaluating such models. 
-                It features 513 object instances across 14 categories, 1302 manipulation tasks in 16 classes, 
-                and over 10,000 expert demonstrations synthesized in a 3D simulator. Each demonstration includes 
-                a high-level task instruction, a sequence of basic part-based skills, and ground-truth 3D object data. 
-                Additionally, we designed a comprehensive test
-                suite to evaluate the generalizability of learned policies
-                across new states, objects, and tasks. We evaluated several state-of-the-art robot manipulation
-                approaches including end-to-end vision-language policy learning
-                and bi-level planning models on our benchmark. The experimental
+                labels. We introduce PartInstruct, the first benchmark for
+                training and evaluating such models. It features 513 object
+                instances across 14 categories, 1302 manipulation tasks in 16
+                classes, and over 10,000 expert demonstrations synthesized in a
+                3D simulator. Each demonstration includes a high-level task
+                instruction, a sequence of basic part-based skills, and
+                ground-truth 3D object data. Additionally, we designed a
+                comprehensive test suite to evaluate the generalizability of
+                learned policies across new states, objects, and tasks. We
+                evaluated several state-of-the-art robot manipulation approaches
+                including end-to-end vision-language policy learning and
+                bi-level planning models on our benchmark. The experimental
                 results reveal that current models struggle to robustly ground
                 part concepts and predict actions in 3D space, and face
                 challenges when manipulating object parts in long-horizon tasks.
@@ -412,6 +415,20 @@
         <h2 class="title is-3">
           PartGym: 3D Simulation for Part-level Manipulation
         </h2>
+        <div class="content">
+          <p>
+            <strong>PartGym</strong> is a realistic robot simulator for
+            fine-grained manipulation tasks requiring part-level understanding.
+            Built on Pybullet, it features a 7-DoF Franka Emika Panda robot with
+            a two-finger parallel gripper and simulates manipulation tasks for
+            14 types of everyday objects from the PartNet Mobility dataset.
+            PartGym provides (1) rich 3D assets, (2) part-level annotations, and
+            (3) a diverse task set with natural language instructions. It
+            includes 513 object instances and 4,653 part labels for detailed
+            manipulation.
+          </p>
+        </div>
+
         <!-- Multimodal Observations -->
         <div class="content">
           <p>
@@ -432,7 +449,9 @@
           <div class="columns">
             <div class="column">
               <div class="content has-text-centered">
-                <h5 class="subtitle is-5 has-text-centered">Object Categories</h5>
+                <h5 class="subtitle is-5 has-text-centered">
+                  Object Categories
+                </h5>
                 <p>
                   The following star plot shows the relative distribution of the
                   number of episodes in each object category in the dataset.
@@ -518,7 +537,9 @@
         <div class="content" style="display: flex; align-items: flex-start">
           <!-- Left Side: Paragraph -->
           <div style="flex: 1; padding-right: 20px">
-            <h5 class="subtitle is-5" style="margin-top: 40px;">Evaluation Protocol</h5>
+            <h5 class="subtitle is-5" style="margin-top: 40px">
+              Evaluation Protocol
+            </h5>
             <p>
               To systematically evaluate model performance, we designed a
               five-level evaluation protocol, each of which evaluates a policy
@@ -541,7 +562,7 @@
 
         <div class="content">
           <!-- First Image -->
-          <div style="text-align: center; margin-bottom: 20px;">
+          <div style="text-align: center; margin-bottom: 20px">
             <figure style="transform: translateX(0px)">
               <img
                 src="./static/images/vis/image_1.png"
@@ -551,9 +572,9 @@
               <figcaption>Left: Training set. Right: Test 1(OS).</figcaption>
             </figure>
           </div>
-        
+
           <!-- Second Image -->
-          <div style="text-align: center;">
+          <div style="text-align: center">
             <figure style="transform: translateX(0px)">
               <img
                 src="./static/images/vis/image_2.png"
@@ -642,11 +663,10 @@
                 We evaluate several state-of-the-art end-to-end robot
                 manipulation policy learning methods, including DP, DP3, Act3D,
                 RVT2 and Octo. Note that the original DP and DP3 models do not
-                support language inputs. To fit the setup of
-                PartInstruct, we use a pre-trained T5 language encoder to get
-                the language embedding, then concatenated it with other features
-                as the observation condition for the denoising diffusion
-                process.
+                support language inputs. To fit the setup of PartInstruct, we
+                use a pre-trained T5 language encoder to get the language
+                embedding, then concatenated it with other features as the
+                observation condition for the denoising diffusion process.
               </p>
             </div>
             <h5 class="subtitle is-5"><strong>Bi-level Planning</strong></h5>
@@ -702,22 +722,40 @@
     <!-- Qualitative Results Section -->
     <section class="section">
       <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-weight-semibold" style="margin-bottom: 40px;">Qualitative Results</h2>
+        <h2
+          class="title is-3 has-text-weight-semibold"
+          style="margin-bottom: 40px"
+        >
+          Qualitative Results
+        </h2>
 
         <!-- Video Grid (2x2) -->
-        <div class="columns is-multiline is-centered" style="margin-bottom: 40px;">
+        <div
+          class="columns is-multiline is-centered"
+          style="margin-bottom: 40px"
+        >
           <!-- Video 1 -->
           <div class="column is-half">
             <div class="video-container">
-              <p class="subtitle is-5" style="font-style: italic; margin-bottom: 4px;">
+              <p
+                class="subtitle is-5"
+                style="font-style: italic; margin-bottom: 4px"
+              >
                 Test 3-2: Environment 1
               </p>
               <div
                 class="subtitle-bar"
-                style="border-bottom: 3px solid #a9a9a9; width: 100%; margin: 0 0 16px 0;"
+                style="
+                  border-bottom: 3px solid #a9a9a9;
+                  width: 100%;
+                  margin: 0 0 16px 0;
+                "
               ></div>
               <video autoplay controls muted loop playsinline width="100%">
-                <source src="./static/videos/test2_2_env_2_video.mp4" type="video/mp4" />
+                <source
+                  src="./static/videos/test2_2_env_2_video.mp4"
+                  type="video/mp4"
+                />
               </video>
             </div>
           </div>
@@ -725,15 +763,25 @@
           <!-- Video 2 -->
           <div class="column is-half">
             <div class="video-container">
-              <p class="subtitle is-5" style="font-style: italic; margin-bottom: 4px;">
+              <p
+                class="subtitle is-5"
+                style="font-style: italic; margin-bottom: 4px"
+              >
                 Test 3-5: Environment 5 (Mug)
               </p>
               <div
                 class="subtitle-bar"
-                style="border-bottom: 3px solid #a9a9a9; width: 100%; margin: 0 0 16px 0;"
+                style="
+                  border-bottom: 3px solid #a9a9a9;
+                  width: 100%;
+                  margin: 0 0 16px 0;
+                "
               ></div>
               <video autoplay controls muted loop playsinline width="100%">
-                <source src="./static/videos/test3_2_env_1_video.mp4" type="video/mp4" />
+                <source
+                  src="./static/videos/test3_2_env_1_video.mp4"
+                  type="video/mp4"
+                />
               </video>
             </div>
           </div>
@@ -741,15 +789,25 @@
           <!-- Video 3 -->
           <div class="column is-half">
             <div class="video-container">
-              <p class="subtitle is-5" style="font-style: italic; margin-bottom: 4px;">
+              <p
+                class="subtitle is-5"
+                style="font-style: italic; margin-bottom: 4px"
+              >
                 Test 2-2: Environment 2
               </p>
               <div
                 class="subtitle-bar"
-                style="border-bottom: 3px solid #a9a9a9; width: 100%; margin: 0 0 16px 0;"
+                style="
+                  border-bottom: 3px solid #a9a9a9;
+                  width: 100%;
+                  margin: 0 0 16px 0;
+                "
               ></div>
               <video autoplay controls muted loop playsinline width="100%">
-                <source src="./static/videos/test3_5_env_5_mug.mp4" type="video/mp4" />
+                <source
+                  src="./static/videos/test3_5_env_5_mug.mp4"
+                  type="video/mp4"
+                />
               </video>
             </div>
           </div>
@@ -757,15 +815,25 @@
           <!-- Video 4 -->
           <div class="column is-half">
             <div class="video-container">
-              <p class="subtitle is-5" style="font-style: italic; margin-bottom: 4px;">
+              <p
+                class="subtitle is-5"
+                style="font-style: italic; margin-bottom: 4px"
+              >
                 Test 5-1: Episode 100472
               </p>
               <div
                 class="subtitle-bar"
-                style="border-bottom: 3px solid #a9a9a9; width: 100%; margin: 0 0 16px 0;"
+                style="
+                  border-bottom: 3px solid #a9a9a9;
+                  width: 100%;
+                  margin: 0 0 16px 0;
+                "
               ></div>
               <video autoplay controls muted loop playsinline width="100%">
-                <source src="./static/videos/test5_1_video_episode_100472.mp4" type="video/mp4" />
+                <source
+                  src="./static/videos/test5_1_video_episode_100472.mp4"
+                  type="video/mp4"
+                />
               </video>
             </div>
           </div>
@@ -775,14 +843,18 @@
           <strong>Comparison of End-to-End and Bi-level Episodes</strong>
         </h5>
 
-        <p class="subtitle is-5" style="font-style: italic; margin-bottom: 4px;">
+        <p class="subtitle is-5" style="font-style: italic; margin-bottom: 4px">
           placeholder text
         </p>
 
         <!-- Single Bar for Two Videos -->
         <div
           class="comparison-bar"
-          style="border-bottom: 3px solid #a9a9a9; width: 100%; margin: 8px 0 15px 0;"
+          style="
+            border-bottom: 3px solid #a9a9a9;
+            width: 100%;
+            margin: 8px 0 15px 0;
+          "
         ></div>
 
         <!-- Video Row -->
@@ -791,9 +863,15 @@
           <div class="column is-half">
             <div class="video-container">
               <video autoplay controls muted loop playsinline width="100%">
-                <source src="./static/videos/FAILED_compare_with_VLM_box.mp4" type="video/mp4" />
+                <source
+                  src="./static/videos/FAILED_compare_with_VLM_box.mp4"
+                  type="video/mp4"
+                />
               </video>
-              <p class="caption has-text-centered" style="font-style: italic; margin-top: 5px">
+              <p
+                class="caption has-text-centered"
+                style="font-style: italic; margin-top: 5px"
+              >
                 DP3
               </p>
             </div>
@@ -803,9 +881,15 @@
           <div class="column is-half">
             <div class="video-container">
               <video autoplay controls muted loop playsinline width="100%">
-                <source src="./static/videos/test4_13_video_box.mp4" type="video/mp4" />
+                <source
+                  src="./static/videos/test4_13_video_box.mp4"
+                  type="video/mp4"
+                />
               </video>
-              <p class="caption has-text-centered" style="font-style: italic; margin-top: 5px">
+              <p
+                class="caption has-text-centered"
+                style="font-style: italic; margin-top: 5px"
+              >
                 Gemini-2.0 Flash+DP3-S
               </p>
             </div>
