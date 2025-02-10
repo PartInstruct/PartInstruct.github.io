@@ -432,7 +432,7 @@
           <div class="columns">
             <div class="column">
               <div class="content has-text-centered">
-                <h5 class="title is-5 has-text-centered">Object Categories</h5>
+                <h5 class="subtitle is-5 has-text-centered">Object Categories</h5>
                 <p>
                   The following star plot shows the relative distribution of the
                   number of episodes in each object category in the dataset.
@@ -447,7 +447,7 @@
             </div>
             <div class="column">
               <div class="content has-text-centered">
-                <h5 class="title is-5 has-text-centered">Object Parts</h5>
+                <h5 class="subtitle is-5 has-text-centered">Object Parts</h5>
                 <p>
                   The following graphs show annotated parts grouped by object
                   categories. Spatial part names are highlighted in light gray.
@@ -642,7 +642,7 @@
                 We evaluate several state-of-the-art end-to-end robot
                 manipulation policy learning methods, including DP, DP3, Act3D,
                 RVT2 and Octo. Note that the original DP and DP3 models do not
-                support language instruction inputs. To fit the setup of
+                support language inputs. To fit the setup of
                 PartInstruct, we use a pre-trained T5 language encoder to get
                 the language embedding, then concatenated it with other features
                 as the observation condition for the denoising diffusion
@@ -677,7 +677,7 @@
                 skill instruction for the current step as the subgoal
                 <span>\( sg_t \)</span>, i.e.,
                 <span>\( \pi_\text{VLM}(sg_t | o_t, I_\text{task}) \)</span>,
-                where <span>\( o_t \)</span> is the observation at step
+                where <span>\( o_t \)</span> is the observation at
                 <span>\( t \)</span>.
               </p>
               <p>
@@ -702,32 +702,22 @@
     <!-- Qualitative Results Section -->
     <section class="section">
       <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-weight-semibold">Qualitative Results</h2>
+        <h2 class="title is-3 has-text-weight-semibold" style="margin-bottom: 40px;">Qualitative Results</h2>
 
         <!-- Video Grid (2x2) -->
-        <div class="columns is-multiline is-centered">
+        <div class="columns is-multiline is-centered" style="margin-bottom: 40px;">
           <!-- Video 1 -->
           <div class="column is-half">
             <div class="video-container">
-              <h3
-                class="subtitle is-5 has-text-centered"
-                style="font-style: italic"
-              >
+              <p class="subtitle is-5" style="font-style: italic; margin-bottom: 4px;">
                 Test 3-2: Environment 1
-              </h3>
+              </p>
               <div
                 class="subtitle-bar"
-                style="
-                  border-bottom: 2px solid #a9a9a9;
-                  width: 100%;
-                  margin: 8px 0;
-                "
+                style="border-bottom: 3px solid #a9a9a9; width: 100%; margin: 0 0 16px 0;"
               ></div>
               <video autoplay controls muted loop playsinline width="100%">
-                <source
-                  src="./static/videos/test2_2_env_2_video.mp4"
-                  type="video/mp4"
-                />
+                <source src="./static/videos/test2_2_env_2_video.mp4" type="video/mp4" />
               </video>
             </div>
           </div>
@@ -735,25 +725,15 @@
           <!-- Video 2 -->
           <div class="column is-half">
             <div class="video-container">
-              <h3
-                class="subtitle is-5 has-text-centered"
-                style="font-style: italic"
-              >
+              <p class="subtitle is-5" style="font-style: italic; margin-bottom: 4px;">
                 Test 3-5: Environment 5 (Mug)
-              </h3>
+              </p>
               <div
                 class="subtitle-bar"
-                style="
-                  border-bottom: 2px solid #a9a9a9;
-                  width: 100%;
-                  margin: 8px 0;
-                "
+                style="border-bottom: 3px solid #a9a9a9; width: 100%; margin: 0 0 16px 0;"
               ></div>
               <video autoplay controls muted loop playsinline width="100%">
-                <source
-                  src="./static/videos/test3_2_env_1_video.mp4"
-                  type="video/mp4"
-                />
+                <source src="./static/videos/test3_2_env_1_video.mp4" type="video/mp4" />
               </video>
             </div>
           </div>
@@ -761,25 +741,15 @@
           <!-- Video 3 -->
           <div class="column is-half">
             <div class="video-container">
-              <h3
-                class="subtitle is-5 has-text-centered"
-                style="font-style: italic"
-              >
+              <p class="subtitle is-5" style="font-style: italic; margin-bottom: 4px;">
                 Test 2-2: Environment 2
-              </h3>
+              </p>
               <div
                 class="subtitle-bar"
-                style="
-                  border-bottom: 2px solid #a9a9a9;
-                  width: 100%;
-                  margin: 8px 0;
-                "
+                style="border-bottom: 3px solid #a9a9a9; width: 100%; margin: 0 0 16px 0;"
               ></div>
               <video autoplay controls muted loop playsinline width="100%">
-                <source
-                  src="./static/videos/test3_5_env_5_mug.mp4"
-                  type="video/mp4"
-                />
+                <source src="./static/videos/test3_5_env_5_mug.mp4" type="video/mp4" />
               </video>
             </div>
           </div>
@@ -787,25 +757,15 @@
           <!-- Video 4 -->
           <div class="column is-half">
             <div class="video-container">
-              <h3
-                class="subtitle is-5 has-text-centered"
-                style="font-style: italic"
-              >
+              <p class="subtitle is-5" style="font-style: italic; margin-bottom: 4px;">
                 Test 5-1: Episode 100472
-              </h3>
+              </p>
               <div
                 class="subtitle-bar"
-                style="
-                  border-bottom: 2px solid #a9a9a9;
-                  width: 100%;
-                  margin: 8px 0;
-                "
+                style="border-bottom: 3px solid #a9a9a9; width: 100%; margin: 0 0 16px 0;"
               ></div>
               <video autoplay controls muted loop playsinline width="100%">
-                <source
-                  src="./static/videos/test5_1_video_episode_100472.mp4"
-                  type="video/mp4"
-                />
+                <source src="./static/videos/test5_1_video_episode_100472.mp4" type="video/mp4" />
               </video>
             </div>
           </div>
@@ -815,17 +775,14 @@
           <strong>Comparison of End-to-End and Bi-level Episodes</strong>
         </h5>
 
-        <!-- Smaller Title for Comparison Section -->
-        <h5 class="title is-5" style="margin-top: 40px">placeholder texts</h5>
+        <p class="subtitle is-5" style="font-style: italic; margin-bottom: 4px;">
+          placeholder text
+        </p>
 
         <!-- Single Bar for Two Videos -->
         <div
           class="comparison-bar"
-          style="
-            border-bottom: 2px solid #a9a9a9;
-            width: 100%;
-            margin: 8px 0 15px 0;
-          "
+          style="border-bottom: 3px solid #a9a9a9; width: 100%; margin: 8px 0 15px 0;"
         ></div>
 
         <!-- Video Row -->
@@ -834,15 +791,9 @@
           <div class="column is-half">
             <div class="video-container">
               <video autoplay controls muted loop playsinline width="100%">
-                <source
-                  src="./static/videos/FAILED_compare_with_VLM_box.mp4"
-                  type="video/mp4"
-                />
+                <source src="./static/videos/FAILED_compare_with_VLM_box.mp4" type="video/mp4" />
               </video>
-              <p
-                class="caption has-text-centered"
-                style="font-style: italic; margin-top: 5px"
-              >
+              <p class="caption has-text-centered" style="font-style: italic; margin-top: 5px">
                 DP3
               </p>
             </div>
@@ -852,15 +803,9 @@
           <div class="column is-half">
             <div class="video-container">
               <video autoplay controls muted loop playsinline width="100%">
-                <source
-                  src="./static/videos/test4_13_video_box.mp4"
-                  type="video/mp4"
-                />
+                <source src="./static/videos/test4_13_video_box.mp4" type="video/mp4" />
               </video>
-              <p
-                class="caption has-text-centered"
-                style="font-style: italic; margin-top: 5px"
-              >
+              <p class="caption has-text-centered" style="font-style: italic; margin-top: 5px">
                 Gemini-2.0 Flash+DP3-S
               </p>
             </div>
@@ -904,46 +849,5 @@
         <pre><code>Coming Soon</code></pre>
       </div>
     </section>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="content has-text-centered">
-          <a class="icon-link" href="./static/videos/partinstruct_paper.pdf">
-            <i class="fas fa-file-pdf"></i>
-          </a>
-          <a
-            class="icon-link"
-            href="about:blank"
-            class="external-link"
-            disabled
-          >
-            <i class="fab fa-github"></i>
-          </a>
-        </div>
-        <div class="columns is-centered">
-          <div class="column is-8">
-            <div class="content">
-              <p>
-                This website is licensed under a
-                <a
-                  rel="license"
-                  href="http://creativecommons.org/licenses/by-sa/4.0/"
-                  >Creative Commons Attribution-ShareAlike 4.0 International
-                  License</a
-                >.
-              </p>
-              <p>
-                This website was made possible thanks to the incredibly hard
-                work of the team behind the
-                <a href="https://github.com/nerfies/nerfies.github.io"
-                  >Nerfies</a
-                >
-                website.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
   </body>
 </html>
