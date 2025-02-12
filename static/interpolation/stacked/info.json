@@ -1,0 +1,41 @@
+{
+    "ep_id": "10147",
+    "obj_id": "100051",
+    "obj_pose": [
+        0.0,
+        0.0,
+        0.7071067811865476,
+        -0.7071067811865475,
+        -0.009896872569070327,
+        -0.02738226049976829,
+        0.15
+    ],
+    "obj_scale": 0.12,
+    "part_names": [
+        "base body",
+        "lid"
+    ],
+    "task_instruction": "Hold the lid of the kitchenpot and slide it forwards.",
+    "skill_instructions": [
+        "Grasp the kitchenpot at its lid",
+        "Move forwards"
+    ],
+    "chain_params": [
+        {
+            "skill_name": "grasp_obj",
+            "params": {
+                "part_grasp": "lid"
+            }
+        },
+        {
+            "skill_name": "move_gripper",
+            "params": {
+                "dir_move": "front",
+                "grasping": true,
+                "touching": false,
+                "put_down": false
+            }
+        }
+    ],
+    "demo_path": "data/demos/kitchenpot/3/episode10147"
+}

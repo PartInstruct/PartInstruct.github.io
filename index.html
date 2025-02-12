@@ -452,23 +452,21 @@
         <div class="content">
           <h5 class="subtitle is-5">Interactive Demos</h5>
           <p>
-            Here we provide an interactive demo to animate the task:
-            <strong>"Push the bucket's left part, then release".</strong> You
-            can use the slider here to see every timestep between the initial
-            and final state.
+            Here we provide interactive demos to animate part-level manipulation tasks. You
+            can use the slider to see the observation of every timestep and the corresponding skill instruction.
           </p>
-          <div class="columns is-vcentered interpolation-panel">
+          <div class="columns is-vcentered interpolation-panel" style="max-width:800px; margin:0 auto;">
             <div class="column interpolation-video-column">
               <div id="interpolation-image-wrapper">Loading...</div>
               <input
-                class="slider is-fullwidth is-large is-info"
+                class="slider is-large is-info"
                 id="interpolation-slider"
                 step="1"
                 min="0"
                 max="100"
                 value="0"
                 type="range"
-              />
+                style="width:780px; margin:20px auto; display:block;" />
             </div>
           </div>
         </div>
