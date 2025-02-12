@@ -1,0 +1,62 @@
+{
+    "ep_id": "180926",
+    "obj_id": "11113",
+    "obj_pose": [
+        0.0,
+        0.0,
+        1.0,
+        6.123233995736766e-17,
+        0.023272668742283995,
+        -0.025587199791963014,
+        0.15
+    ],
+    "obj_scale": 0.15,
+    "part_names": [
+        "blade",
+        "handle",
+        "screw"
+    ],
+    "task_instruction": "Lift the scissors by the handle, move left, then set them down.",
+    "skill_instructions": [
+        "Grasp the scissors at its handle",
+        "Move upwards",
+        "Move to the left",
+        "Move downwards"
+    ],
+    "chain_params": [
+        {
+            "skill_name": "grasp_obj",
+            "params": {
+                "part_grasp": "handle"
+            }
+        },
+        {
+            "skill_name": "move_gripper",
+            "params": {
+                "dir_move": "top",
+                "grasping": true,
+                "touching": false,
+                "put_down": false
+            }
+        },
+        {
+            "skill_name": "move_gripper",
+            "params": {
+                "dir_move": "left",
+                "grasping": true,
+                "touching": false,
+                "put_down": false
+            }
+        },
+        {
+            "skill_name": "move_gripper",
+            "params": {
+                "dir_move": "bottom",
+                "grasping": true,
+                "touching": false,
+                "put_down": true
+            }
+        }
+    ],
+    "demo_path": "data/demos/scissors/9/episode180926"
+}

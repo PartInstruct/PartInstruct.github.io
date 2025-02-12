@@ -1,0 +1,49 @@
+{
+    "ep_id": "300036",
+    "obj_id": "100426",
+    "obj_pose": [
+        0.0,
+        0.0,
+        0.7071067811865476,
+        -0.7071067811865475,
+        0.0462425791734732,
+        -0.07485601615784929,
+        0.15
+    ],
+    "obj_scale": 0.1,
+    "part_names": [
+        "rotation lid",
+        "base body"
+    ],
+    "task_instruction": "Raise the box by its front and rotate the top to point right.",
+    "skill_instructions": [
+        "Grasp the box at its front",
+        "Move upwards",
+        "Reorient the top of the box to face right"
+    ],
+    "chain_params": [
+        {
+            "params": {
+                "part_grasp": "front"
+            },
+            "skill_name": "grasp_obj"
+        },
+        {
+            "params": {
+                "dir_move": "top",
+                "grasping": true,
+                "put_down": false,
+                "touching": false
+            },
+            "skill_name": "move_gripper"
+        },
+        {
+            "params": {
+                "dir_rotate": "right",
+                "part_rotate": "top"
+            },
+            "skill_name": "rotate_obj"
+        }
+    ],
+    "demo_path": "data/demos_augmented_test1_new/box/8/episode300036"
+}
