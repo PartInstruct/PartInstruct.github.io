@@ -332,79 +332,18 @@
     <!-- Problem Setup -->
     <section class="section">
       <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column is-full-width">
-            <h2 class="title is-3">Problem Setup</h2>
-            <div class="content has-text-justified">
-              <p>
-                A natural language instruction \( I_{\text{task}} \) describes a
-                part-level instruction following task if it requires that a
-                robot perform a fine-grained manipulation where the robot must
-                interact with a list of object parts in a certain manner to
-                achieve the intended goal \( g \). Critically, the relevant
-                object parts and how the robot needs to interact with them are
-                often not explicitly described in the instructions. Thus, the
-                robot must learn to reason about relevant parts and plan how to
-                manipulate them to perform the task successfully.
-              </p>
-              <p>
-                To define \( g \), we first establish a set of goal predicates
-                that specify the states of the object, its parts, the robot's
-                end effector, and their relationships. For example,
-                \(\texttt{ON} (\text{obj}, \text{part}, \text{surface})\)
-                represents physical contact between an object part and a given
-                surface; \(\texttt{FACING}(\text{obj}, \text{part},
-                \text{dir})\) indicates the orientation of an object part from a
-                third-person perspective; and \(\texttt{GRASPING}(\text{obj},
-                \text{part})\) denotes a "grasp" interaction between the object
-                part and the robot's end effector.
-              </p>
-              <p>
-                Given these goal predicates, each task goal is defined by a set
-                of goal predicates. Examples of tasks are presented in the task
-                definition table. For instance, in a given task example, the
-                goal is represented by the predicate set:
-              </p>
-              \[ \{ \texttt{GRASPING}(\text{bottle}, \sim\text{cap}), \quad
-              \texttt{FACING}(\text{bottle}, \text{cap}, \text{front}), \quad
-              \texttt{AT_POSITION}(\text{bottle}, \text{INIT_POS} +
-              \text{VEC}(\text{UP})) \} \]
-              <p>
-                where \( \sim\text{cap} \) is any part other than the cap. Note
-                that some tasks consist of multiple phases, where the next phase
-                can only begin after completing the previous one, as the order
-                of interactions is crucial for these tasks.
-              </p>
-              <p>
-                To develop an embodied agent capable of executing tasks defined
-                by \( g \), we hypothesize that it would be beneficial to start
-                with a set of base skills that can be combined to handle a wide
-                range of fine-grained manipulation tasks. In particular, we
-                consider five types of base skills: \( \texttt{grasp_part} \),
-                \( \texttt{touch_part} \), \( \texttt{rotate_obj} \), \(
-                \texttt{move_gripper} \), and \( \texttt{release_gripper} \).
-                Each skill is parameterized by (1) the object part it interacts
-                with and the type of interaction (e.g., touching or grasping),
-                (2) the degree of rotation required for the part, and (3) the
-                distance and direction in which the gripper or object should be
-                moved. This information is summarized in a skill instruction \(
-                I_{\text{skill}} \) associated with that skill.
-              </p>
-              <p>
-                As illustrated in the interactive demo, a task given by an
-                overall task instruction can be decomposed into a sequence of
-                base skill executions, each described by a skill instruction.
-                For example, in the task
-                <i>“Push the bucket's left part, then release”</i>, the robot
-                must execute three skills: (1) To "push" the bucket's left part,
-                the robot first executes \( \texttt{touch_part}(\text{bucket},
-                \text{left}) \). (2) Then, it moves the end effector to the
-                right using \( \texttt{move_gripper}(\text{right}) \). (3)
-                Finally, the robot completes the task by executing \(
-                \texttt{release_gripper}() \).
-              </p>
-            </div>
-          </div>
+        <h2 class="title is-3">Problem Setup</h2>
+        <div class="video-container">
+          <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube.com/embed/YuwjOJLW-wY?si=Uw3KvIrhquykFZma" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
     </section>
