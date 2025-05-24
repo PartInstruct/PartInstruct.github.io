@@ -9,7 +9,7 @@ var demos = {
 };
 
 // Where your two icons live:
-var ICON_BASE = "./static/interpolation";
+var ICON_BASE = "./static/interpolation";  // Picture1.png & Picture2.png go here
 
 // Current demo key (default to "demo1")
 var currentDemoKey = "demo1";
@@ -38,10 +38,10 @@ function preloadInterpolationImages() {
   interp_images = [];
   for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
     (function(i) {
-      var path = INTERP_BASE + '/frame_' + String(i).padStart(4, '0') + '.png';
+      var path = INTERP_BASE + "/frame_" + String(i).padStart(4, "0") + ".png";
       var img = new Image();
       img.onerror = function() {
-        console.warn('Image not found: ' + path);
+        console.warn("Image not found: " + path);
         img.failed = true;
       };
       img.src = path;
@@ -60,12 +60,14 @@ function preloadInterpolationLabels() {
         success: json[i]["Current Skill Success"]
       };
     }
-    // Build skillMapping: increment when success flips false → true
     skillMapping = [];
     if (NUM_INTERP_FRAMES > 0) {
       skillMapping[0] = 0;
       for (var i = 1; i < NUM_INTERP_FRAMES; i++) {
-        if (interp_labels[i - 1].success === false && interp_labels[i].success === true) {
+        if (
+          interp_labels[i - 1].success === false &&
+          interp_labels[i].success === true
+        ) {
           skillMapping[i] = skillMapping[i - 1] + 1;
         } else {
           skillMapping[i] = skillMapping[i - 1];
@@ -73,34 +75,37 @@ function preloadInterpolationLabels() {
       }
     }
     console.log("Skill mapping:", skillMapping);
-    // After labels are ready, render the first frame.
-    setInterpolationImage($('#interpolation-slider').val());
+    setInterpolationImage($("#interpolation-slider").val());
   }).fail(function(jqxhr, textStatus, error) {
     console.error("Failed to load states.json:", textStatus, error);
   });
 }
 
 // Display a given frame index, with:
-//  • Task instruction + icon at the top
-//  • Skill instruction  + icon at the bottom (now bold)
+//  • Task instruction + icon ABOVE the image (no overlay)
+//  • Skill instruction + icon BELOW in a white-overlay band (bold)
 function setInterpolationImage(i) {
   var intendedIndex = parseInt(i, 10);
   var displayIndex = intendedIndex;
 
-  // Find nearest non-failed image forward...
-  while (displayIndex < NUM_INTERP_FRAMES &&
-         (!interp_images[displayIndex] || interp_images[displayIndex].failed)) {
+  // Find the nearest non-failed image forward...
+  while (
+    displayIndex < NUM_INTERP_FRAMES &&
+    (!interp_images[displayIndex] || interp_images[displayIndex].failed)
+  ) {
     displayIndex++;
   }
   // ...or backward if none ahead.
   if (displayIndex >= NUM_INTERP_FRAMES) {
     displayIndex = intendedIndex;
-    while (displayIndex >= 0 &&
-           (!interp_images[displayIndex] || interp_images[displayIndex].failed)) {
+    while (
+      displayIndex >= 0 &&
+      (!interp_images[displayIndex] || interp_images[displayIndex].failed)
+    ) {
       displayIndex--;
     }
     if (displayIndex < 0) {
-      $('#interpolation-image-wrapper')
+      $("#interpolation-image-wrapper")
         .empty()
         .append('<div class="error">No valid frame available.</div>');
       return;
@@ -109,110 +114,138 @@ function setInterpolationImage(i) {
 
   var image = interp_images[displayIndex];
   $(image).css({
-    'max-width': '600px',
-    'width': '100%',
-    'height': 'auto'
+    "max-width": "600px",
+    width: "100%",
+    height: "auto"
   });
 
   // Lookup raw state + compute instruction index
   var state = interp_labels[intendedIndex] || {};
-  var rawSkill = state.skill || ("Frame " + intendedIndex);
+  var rawSkill = state.skill || "Frame " + intendedIndex;
   var instrIndex = skillMapping[intendedIndex] || 0;
-  if (info && info.skill_instructions && instrIndex >= info.skill_instructions.length) {
+  if (
+    info &&
+    info.skill_instructions &&
+    instrIndex >= info.skill_instructions.length
+  ) {
     instrIndex = info.skill_instructions.length - 1;
   }
 
   // Final texts
-  var taskInstr = (info && info.task_instruction) ? info.task_instruction : "";
+  var taskInstr = info && info.task_instruction ? info.task_instruction : "";
   var skillName = rawSkill;
   var skillInstr = "";
   if (info && info.chain_params && info.skill_instructions) {
     skillName = info.chain_params[instrIndex].skill_name;
     skillInstr = info.skill_instructions[instrIndex];
   }
-  var skillText = skillName.toUpperCase() +
-                  (skillInstr ? ": " + skillInstr : "");
+  var skillText =
+    skillName.toUpperCase() + (skillInstr ? ": " + skillInstr : "");
 
-  // Icon sources (from the common folder)
-  var taskIconSrc  = ICON_BASE + '/Picture1.png';
-  var skillIconSrc = ICON_BASE + '/Picture2.png';
+  // Icon sources
+  var taskIconSrc = ICON_BASE + "/Picture1.png";
+  var skillIconSrc = ICON_BASE + "/Picture2.png";
 
-  // Build wrapper & container
+  // Build the outer wrapper
   var wrapper = $('<div class="image-wrapper"></div>').css({
-    'max-width': '600px',
-    'margin': '0 auto',
-    'text-align': 'center',
-    'padding': '30px 10px 10px',
-    'position': 'relative'
+    "max-width": "600px",
+    margin: "0 auto",
+    "text-align": "center",
+    padding: "10px",
+    position: "relative"
   });
+
+  // — Task instruction ABOVE the image (no overlay)
+  if (taskInstr) {
+    var taskLabel = $('<div class="task-label"></div>').css({
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      width: '100%',
+      "font-size": "20px",
+      "font-family": "Georgia, serif",
+      color: "#333",
+      "margin-bottom": "10px"
+    });
+    
+    // Create wrapper for icon and text to keep them together
+    var taskContent = $('<div class="task-content"></div>').css({
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    });
+    
+    var taskIcon = $("<img>")
+      .attr("src", taskIconSrc)
+      .css({
+        width: "24px",
+        height: "35px",
+        "margin-right": "8px"
+      });
+    
+    taskContent.append(taskIcon).append(taskInstr);
+    taskLabel.append(taskContent);
+    wrapper.append(taskLabel);
+  }
+
+  // — Image container
   var imageContainer = $('<div class="image-container"></div>').css({
-    'position': 'relative',
-    'display': 'inline-block',
-    'width': '100%'
+    position: "relative",
+    display: "inline-block",
+    width: "100%"
   });
   imageContainer.append(image);
 
-  // — Top band: Task instruction + icon
-  if (taskInstr) {
-    var topBand = $('<div class="task-instruction-band"></div>').css({
-      display:       'flex',
-      alignItems:    'center',
-      'position': 'absolute', 'top': '0', 'left': '0',
-      'width': '100%', 'background-color': 'rgba(255,255,255,0.8)',
-      'color': '#333', 'padding': '10px',
-      'font-size': '20px', 'font-family': 'Georgia, serif',
-      'box-sizing': 'border-box'
-    });
-    var taskIcon = $('<img>')
-      .attr('src', taskIconSrc)
-      .css({
-        'display': 'inline-block',
-        'margin-right': '8px',
-        'width': '24px',
-        'height': '30px'
-      });
-    topBand.append(taskIcon).append(taskInstr);
-    imageContainer.append(topBand);
-  }
-
-  // — Bottom band: Skill + instruction + icon (bolded)
+  // — Skill overlay at bottom (with icon + bold text)
   if (skillText) {
     var bottomBand = $('<div class="skill-instruction-band"></div>').css({
-      display:       'flex',        // <-- add
-      alignItems:    'center',      // <-- add
-      'position': 'absolute', 'bottom': '0', 'left': '0',
-      'width': '100%', 'background-color': 'rgba(255,255,255,0.8)',
-      'color': '#000', 'padding': '10px',
-      'font-size': '16px', 'font-family': 'Arial, sans-serif',
-      'box-sizing': 'border-box'
+      position: "absolute",
+      bottom: "0",
+      left: "0",
+      width: "100%",
+      "background-color": "rgba(255,255,255,0.8)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: "10px",
+      "box-sizing": "border-box",
+      "font-size": "16px",
+      "font-family": "Arial, sans-serif",
+      color: "#000"
     });
-    var skillIcon = $('<img>')
-      .attr('src', skillIconSrc)
+    
+    // Create wrapper for icon and text to keep them together
+    var skillContent = $('<div class="skill-content"></div>').css({
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    });
+    
+    var skillIcon = $("<img>")
+      .attr("src", skillIconSrc)
       .css({
-        'display': 'inline-block',
-        'margin-right': '8px',
-        'width': '24px',
-        'height': '24px'
+        width: "24px",
+        height: "24px",
+        "margin-right": "8px"
       });
-    bottomBand
-      .append(skillIcon)
-      .append($('<strong>').text(skillText));
+    
+    skillContent.append(skillIcon).append($("<strong>").text(skillText));
+    bottomBand.append(skillContent);
     imageContainer.append(bottomBand);
   }
 
+  // Put it all together
   wrapper.append(imageContainer);
-  $('#interpolation-image-wrapper').empty().append(wrapper);
+  $("#interpolation-image-wrapper").empty().append(wrapper);
 }
 
-// Switch demos, reload data
+// Switch demos, reload everything
 function loadDemo(demoKey) {
   currentDemoKey = demoKey;
   INTERP_BASE = demos[demoKey].base;
   NUM_INTERP_FRAMES = demos[demoKey].frames;
 
-  $('#interpolation-slider')
-    .val(0)
-    .prop('max', NUM_INTERP_FRAMES - 1);
+  $("#interpolation-slider").val(0).prop("max", NUM_INTERP_FRAMES - 1);
 
   info = null;
   interp_images = [];
@@ -227,7 +260,7 @@ function loadDemo(demoKey) {
 
 $(document).ready(function() {
   // Demo selector
-  $('#demo-selector').on('change', function() {
+  $("#demo-selector").on("change", function() {
     loadDemo($(this).val());
   });
 
@@ -237,11 +270,15 @@ $(document).ready(function() {
   });
 
   // Bulma carousel init (optional)
-  var carousels = bulmaCarousel.attach('.carousel', {
-    slidesToScroll: 1, slidesToShow: 3, loop: true,
-    infinite: true, autoplay: false, autoplaySpeed: 3000
+  var carousels = bulmaCarousel.attach(".carousel", {
+    slidesToScroll: 1,
+    slidesToShow: 3,
+    loop: true,
+    infinite: true,
+    autoplay: false,
+    autoplaySpeed: 3000
   });
-  carousels.forEach(c => c.on('before:show', s => console.log(s)));
+  carousels.forEach(c => c.on("before:show", s => console.log(s)));
 
   // Preload default demo
   preloadInfo();
@@ -250,7 +287,7 @@ $(document).ready(function() {
   setInterpolationImage(0);
 
   // Slider handler
-  $('#interpolation-slider').on('input', function() {
+  $("#interpolation-slider").on("input", function() {
     setInterpolationImage(this.value);
   });
 });
