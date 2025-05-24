@@ -169,7 +169,7 @@ function setInterpolationImage(i) {
         'display': 'inline-block',
         'margin-right': '8px',
         'width': '24px',
-        'height': '24px'
+        'height': '30px'
       });
     topBand.append(taskIcon).append(taskInstr);
     imageContainer.append(topBand);
