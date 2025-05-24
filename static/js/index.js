@@ -155,6 +155,8 @@ function setInterpolationImage(i) {
   // — Top band: Task instruction + icon
   if (taskInstr) {
     var topBand = $('<div class="task-instruction-band"></div>').css({
+      display:       'flex',
+      alignItems:    'center',
       'position': 'absolute', 'top': '0', 'left': '0',
       'width': '100%', 'background-color': 'rgba(255,255,255,0.8)',
       'color': '#333', 'padding': '10px',
@@ -164,7 +166,7 @@ function setInterpolationImage(i) {
     var taskIcon = $('<img>')
       .attr('src', taskIconSrc)
       .css({
-        'vertical-align': 'middle',
+        'display': 'inline-block',
         'margin-right': '8px',
         'width': '24px',
         'height': '24px'
@@ -176,6 +178,8 @@ function setInterpolationImage(i) {
   // — Bottom band: Skill + instruction + icon (bolded)
   if (skillText) {
     var bottomBand = $('<div class="skill-instruction-band"></div>').css({
+      display:       'flex',        // <-- add
+      alignItems:    'center',      // <-- add
       'position': 'absolute', 'bottom': '0', 'left': '0',
       'width': '100%', 'background-color': 'rgba(255,255,255,0.8)',
       'color': '#000', 'padding': '10px',
@@ -185,7 +189,7 @@ function setInterpolationImage(i) {
     var skillIcon = $('<img>')
       .attr('src', skillIconSrc)
       .css({
-        'vertical-align': 'middle',
+        'display': 'inline-block',
         'margin-right': '8px',
         'width': '24px',
         'height': '24px'
