@@ -6892,7 +6892,7 @@
         "Success": false,
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
-        "Current Skill Success": false,
+        "Current Skill Success": true,
         "Steps": 84,
         "Object Pose": [
             -0.08915571771358259,
