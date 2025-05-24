@@ -28,10 +28,11 @@ var INTERP_BASE = demos[currentDemoKey].base;
 var NUM_INTERP_FRAMES = demos[currentDemoKey].frames;
 
 var interp_images = [];
-// Instead of storing just a skill string, we store an object for each frame:
-var interp_labels = []; // each element will be: { skill: string, success: boolean }
-var skillMapping = [];  // Mapping from frame index to the index into info.skill_instructions.
-var info = null; // Global variable to store info.json data
+// Each element: { skill: string, success: boolean }
+var interp_labels = [];
+// Mapping from frame index to index into info.skill_instructions
+var skillMapping = [];
+var info = null; // Will hold info.json data
 
 // Preload info.json.
 function preloadInfo() {
@@ -43,16 +44,16 @@ function preloadInfo() {
   });
 }
 
-// Preload images and mark any that fail to load.
+// Preload all frame images, flagging any that fail.
 function preloadInterpolationImages() {
-  interp_images = []; // clear the images array
+  interp_images = [];
   for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
     (function(i) {
       var path = INTERP_BASE + '/frame_' + String(i).padStart(4, '0') + '.png';
       var img = new Image();
       img.onerror = function() {
         console.warn('Image not found: ' + path);
-        img.failed = true;  // Flag this image as missing.
+        img.failed = true;
       };
       img.src = path;
       interp_images[i] = img;
@@ -60,9 +61,9 @@ function preloadInterpolationImages() {
   }
 }
 
-// Preload states from states.json, storing both "Current Skill" and "Current Skill Success".
+// Preload per-frame labels and build the skill‐to‐instruction mapping.
 function preloadInterpolationLabels() {
-  interp_labels = []; // clear the labels array
+  interp_labels = [];
   $.getJSON(INTERP_BASE + "/states.json", function(json) {
     for (var i = 0; i < NUM_INTERP_FRAMES; i++) {
       interp_labels[i] = {
@@ -70,14 +71,11 @@ function preloadInterpolationLabels() {
         success: json[i]["Current Skill Success"]
       };
     }
-    // Compute the mapping array.
-    // The mapping will store for each frame an index into info.skill_instructions.
+    // Build skillMapping: increment when success flips false → true
     skillMapping = [];
     if (NUM_INTERP_FRAMES > 0) {
       skillMapping[0] = 0;
       for (var i = 1; i < NUM_INTERP_FRAMES; i++) {
-        // If the previous state's success is false and the current state's success becomes true,
-        // then we move to the next instruction.
         if (interp_labels[i - 1].success === false && interp_labels[i].success === true) {
           skillMapping[i] = skillMapping[i - 1] + 1;
         } else {
@@ -86,24 +84,24 @@ function preloadInterpolationLabels() {
       }
     }
     console.log("Skill mapping:", skillMapping);
-    // Once JSON is loaded, update the displayed frame.
     setInterpolationImage($('#interpolation-slider').val());
+  }).fail(function(jqxhr, textStatus, error) {
+    console.error("Failed to load states.json:", textStatus, error);
   });
 }
 
-// Display the image (and its label) for the intended frame index.
-// If the image at the intended index is missing, loop forward until a valid image is found,
-// but always use the intended index for JSON lookups.
+// Display a given frame index, with task instruction at the top band
+// and skill instruction in a bottom band.
 function setInterpolationImage(i) {
-  var intendedIndex = parseInt(i, 10); // the slider's intended frame index
+  var intendedIndex = parseInt(i, 10);
   var displayIndex = intendedIndex;
-  
-  // Loop forward until a valid image is found.
+
+  // Find the nearest non-failed image forward...
   while (displayIndex < NUM_INTERP_FRAMES &&
          (!interp_images[displayIndex] || interp_images[displayIndex].failed)) {
     displayIndex++;
   }
-  // If no valid image is found forward, search backward.
+  // ...or backward if none ahead.
   if (displayIndex >= NUM_INTERP_FRAMES) {
     displayIndex = intendedIndex;
     while (displayIndex >= 0 &&
@@ -117,129 +115,123 @@ function setInterpolationImage(i) {
       return;
     }
   }
-  
+
   var image = interp_images[displayIndex];
-  // Apply scaling to the image.
   $(image).css({
     'max-width': '600px',
     'width': '100%',
     'height': 'auto'
   });
-  
-  // Use the intended index to look up the state from interp_labels.
-  var state = interp_labels[intendedIndex];
-  var rawSkill = (state && state.skill) ? state.skill : ("Frame " + intendedIndex);
-  
-  // Use our precomputed mapping to get the instruction index.
-  var instrIndex = (skillMapping[intendedIndex] !== undefined) ? skillMapping[intendedIndex] : 0;
-  // Clamp the instruction index to the available instructions.
+
+  // Lookup the raw state from the intended index
+  var state = interp_labels[intendedIndex] || {};
+  var rawSkill = state.skill || ("Frame " + intendedIndex);
+  var instrIndex = skillMapping[intendedIndex] || 0;
+
+  // Clamp to valid range
   if (info && info.skill_instructions && instrIndex >= info.skill_instructions.length) {
     instrIndex = info.skill_instructions.length - 1;
   }
-  
-  // If info.json is loaded, use its chain_params and skill_instructions.
-  var skill = rawSkill;
-  var instruction = "";
+
+  var skillName = rawSkill;
+  var skillInstr = "";
   if (info && info.chain_params && info.skill_instructions) {
-    skill = info.chain_params[instrIndex].skill_name;
-    instruction = info.skill_instructions[instrIndex];
+    skillName = info.chain_params[instrIndex].skill_name;
+    skillInstr = info.skill_instructions[instrIndex];
   }
-  
-  // Compose the label text: skill in uppercase and instruction appended.
-  var labelText = (instruction !== "")
-                    ? skill.toUpperCase() + ": " + instruction
-                    : skill.toUpperCase();
-  
-  var label = $('<div class="image-label"></div>').text(labelText);
-  label.css({
-    'font-size': '16px',
-    'color': '#000',
-    'margin-bottom': '10px',
-    'font-family': 'Arial, sans-serif'
-  });
-  
-  // Build the overall wrapper.
-  var wrapper = $('<div class="image-wrapper"></div>');
-  wrapper.css({
+
+  // Gather texts
+  var taskInstr = (info && info.task_instruction) ? info.task_instruction : "";
+  var skillText = skillName.toUpperCase() +
+                  (skillInstr ? ": " + skillInstr : "");
+
+  // Build the container
+  var wrapper = $('<div class="image-wrapper"></div>').css({
     'max-width': '600px',
     'margin': '0 auto',
     'text-align': 'center',
-    'padding-top': '30px',
-    'padding-left': '10px',
-    'padding-right': '10px',
+    'padding': '30px 10px 10px',
     'position': 'relative'
   });
-  
-  // Create a container for the image and the overlapping band.
-  var imageContainer = $('<div class="image-container"></div>');
-  imageContainer.css({
+
+  var imageContainer = $('<div class="image-container"></div>').css({
     'position': 'relative',
     'display': 'inline-block',
     'width': '100%'
   });
-  
   imageContainer.append(image);
-  
-  if (info && info.task_instruction) {
-    var band = $('<div class="task-instruction-band"></div>').text(info.task_instruction);
-    band.css({
+
+  // Top band: Task instruction
+  if (taskInstr) {
+    var topBand = $('<div class="task-instruction-band"></div>').text(taskInstr);
+    topBand.css({
+      'position': 'absolute',
+      'top': '0',
+      'left': '0',
+      'width': '100%',
+      'background-color': 'rgba(255,255,255,0.8)',
+      'color': '#333',
+      'padding': '10px',
+      'font-size': '20px',
+      'font-family': 'Georgia, serif',
+      'box-sizing': 'border-box'
+    });
+    imageContainer.append(topBand);
+  }
+
+  // Bottom band: Skill + instruction
+  if (skillText) {
+    var bottomBand = $('<div class="skill-instruction-band"></div>').text(skillText);
+    bottomBand.css({
       'position': 'absolute',
       'bottom': '0',
       'left': '0',
       'width': '100%',
-      'background-color': 'rgba(238,238,238,0.7)', // Semi-transparent background.
-      'color': '#333',
+      'background-color': 'rgba(255,255,255,0.8)',
+      'color': '#000',
       'padding': '10px',
-      'font-size': '20px',                // Increased font size.
-      'font-family': 'Georgia, serif',    // Fancy font.
+      'font-size': '16px',
+      'font-family': 'Arial, sans-serif',
       'box-sizing': 'border-box'
     });
-    imageContainer.append(band);
+    imageContainer.append(bottomBand);
   }
-  
-  wrapper.append(label);
+
   wrapper.append(imageContainer);
-  
   $('#interpolation-image-wrapper').empty().append(wrapper);
 }
 
-// Function to load a demo based on the selected key.
+// Switch demos: reset globals, reload JSON, images, labels.
 function loadDemo(demoKey) {
   currentDemoKey = demoKey;
   INTERP_BASE = demos[demoKey].base;
   NUM_INTERP_FRAMES = demos[demoKey].frames;
-  
-  $('#interpolation-slider').val(0);
-  $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
-  
-  // Clear previous data.
+
+  $('#interpolation-slider').val(0).prop('max', NUM_INTERP_FRAMES - 1);
+
   info = null;
   interp_images = [];
   interp_labels = [];
   skillMapping = [];
-  
-  // Preload new data.
+
   preloadInfo();
   preloadInterpolationImages();
   preloadInterpolationLabels();
-  
   setInterpolationImage(0);
 }
 
 $(document).ready(function() {
-  // Attach event listener to the demo selector drop down.
+  // Demo selector
   $('#demo-selector').on('change', function() {
-    var selectedDemo = $(this).val();
-    loadDemo(selectedDemo);
+    loadDemo($(this).val());
   });
-  
-  // Toggle the navbar burger for mobile view.
+
+  // Mobile navbar toggle (Bulma)
   $(".navbar-burger").click(function() {
-    $(".navbar-burger").toggleClass("is-active");
-    $(".navbar-menu").toggleClass("is-active");
+    $(".navbar-burger, .navbar-menu").toggleClass("is-active");
   });
-  
-  // Initialize Bulma carousel (if any) with options.
+
+  // Bulma carousel init (if present)
   var options = {
     slidesToScroll: 1,
     slidesToShow: 3,
@@ -248,30 +240,17 @@ $(document).ready(function() {
     autoplay: false,
     autoplaySpeed: 3000
   };
-  
   var carousels = bulmaCarousel.attach('.carousel', options);
-  for (var i = 0; i < carousels.length; i++) {
-    carousels[i].on('before:show', state => {
-      console.log(state);
-    });
-  }
-  
-  var element = document.querySelector('#my-element');
-  if (element && element.bulmaCarousel) {
-    element.bulmaCarousel.on('before-show', function(state) {
-      console.log(state);
-    });
-  }
-  
-  // Preload data for the default demo.
+  carousels.forEach(c => c.on('before:show', state => console.log(state)));
+
+  // Preload default demo
   preloadInfo();
   preloadInterpolationImages();
   preloadInterpolationLabels();
-  
   setInterpolationImage(0);
-  
-  // Update the displayed frame whenever the slider moves.
-  $('#interpolation-slider').on('input', function(event) {
+
+  // Slider input handler
+  $('#interpolation-slider').on('input', function() {
     setInterpolationImage(this.value);
   });
 });
