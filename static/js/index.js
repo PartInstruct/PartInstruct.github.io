@@ -179,7 +179,7 @@ function setInterpolationImage(i) {
       .attr("src", taskIconSrc)
       .css({
         width: "24px",
-        height: "35px",
+        height: "32px",
         "margin-right": "8px"
       });
     
