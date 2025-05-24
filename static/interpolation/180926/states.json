@@ -1666,89 +1666,6 @@
         "Current Skill Success": false,
         "Steps": 21,
         "Object Pose": [
-            2.939172247303596e-12,
-            0.7071032456438034,
-            0.707110316711614,
-            2.9393848205010518e-12,
-            0.023272668742200138,
-            -0.02558725324589377,
-            0.06733540005028237
-        ],
-        "TCP Pose": [
-            0.8375161126354418,
-            0.5331107124420004,
-            -0.11742907914876441,
-            -0.023877619769859755,
-            0.08611888803009925,
-            0.15486120692073554,
-            0.35984647209900417
-        ],
-        "Joint States": [
-            1.232915866623177,
-            -0.378423320918116,
-            1.554545042493369,
-            -2.267546869528111,
-            0.753583381215884,
-            2.3123503324608343,
-            1.9683751347260425
-        ],
-        "Gripper State": [
-            0.040004724054221945
-        ],
-        "Action": [
-            0.05704348040020441,
-            -0.024234480076511286,
-            0.16666718231513747,
-            3.1414734128520796,
-            0.08020833172701058,
-            0.3429590264086943,
-            0.04
-        ],
-        "Reward": 1,
-        "Instruction": "Grasp the scissors at  its handle",
-        "chain_params": [
-            {
-                "skill_name": "grasp_obj",
-                "params": {
-                    "part_grasp": "handle"
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "top",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "left",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "bottom",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": true
-                }
-            }
-        ]
-    },
-    {
-        "Success": false,
-        "Completion Rate": 0.0,
-        "Current Skill": "grasp_obj",
-        "Current Skill Success": false,
-        "Steps": 22,
-        "Object Pose": [
             2.939173575050452e-12,
             0.7071032456438034,
             0.707110316711614,
@@ -1830,90 +1747,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 23,
-        "Object Pose": [
-            2.9391739908095078e-12,
-            0.7071032456438034,
-            0.707110316711614,
-            2.93938307730084e-12,
-            0.023272668742200138,
-            -0.02558725324589377,
-            0.06733540005028237
-        ],
-        "TCP Pose": [
-            0.8592985850626651,
-            0.4984394089621487,
-            -0.11308823596396253,
-            -0.019368742585018053,
-            0.0782727110146001,
-            0.1297149046460688,
-            0.34776736329282376
-        ],
-        "Joint States": [
-            1.234112040662782,
-            -0.42168767096299103,
-            1.6065928632105277,
-            -2.2701493973669944,
-            0.7998651509413933,
-            2.3215034583443357,
-            2.069901854875435
-        ],
-        "Gripper State": [
-            0.04000499150971147
-        ],
-        "Action": [
-            0.05704348040020441,
-            -0.024234480076511286,
-            0.16666718231513747,
-            3.1414734128520796,
-            0.08020833172701058,
-            0.3429590264086943,
-            0.04
-        ],
-        "Reward": 1,
-        "Instruction": "Grasp the scissors at  its handle",
-        "chain_params": [
-            {
-                "skill_name": "grasp_obj",
-                "params": {
-                    "part_grasp": "handle"
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "top",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "left",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "bottom",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": true
-                }
-            }
-        ]
-    },
-    {
-        "Success": false,
-        "Completion Rate": 0.0,
-        "Current Skill": "grasp_obj",
-        "Current Skill Success": false,
-        "Steps": 24,
+        "Steps": 22,
         "Object Pose": [
             2.939172703300408e-12,
             0.7071032456438034,
@@ -1996,7 +1830,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 25,
+        "Steps": 23,
         "Object Pose": [
             2.939172711616764e-12,
             0.7071032456438034,
@@ -2079,7 +1913,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 26,
+        "Steps": 24,
         "Object Pose": [
             2.9391729762528365e-12,
             0.7071032456438034,
@@ -2162,7 +1996,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 27,
+        "Steps": 25,
         "Object Pose": [
             2.939173088089962e-12,
             0.7071032456438034,
@@ -2245,7 +2079,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 28,
+        "Steps": 26,
         "Object Pose": [
             2.9391730598824863e-12,
             0.7071032456438034,
@@ -2328,7 +2162,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 29,
+        "Steps": 27,
         "Object Pose": [
             2.939173151523854e-12,
             0.7071032456438034,
@@ -2411,7 +2245,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 30,
+        "Steps": 28,
         "Object Pose": [
             2.9391734176815925e-12,
             0.7071032456438034,
@@ -2494,7 +2328,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 31,
+        "Steps": 29,
         "Object Pose": [
             2.939173227240277e-12,
             0.7071032456438034,
@@ -2577,7 +2411,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 32,
+        "Steps": 30,
         "Object Pose": [
             2.9391731313571775e-12,
             0.7071032456438034,
@@ -2660,7 +2494,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 33,
+        "Steps": 31,
         "Object Pose": [
             2.9391727209310176e-12,
             0.7071032456438034,
@@ -2743,7 +2577,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 34,
+        "Steps": 32,
         "Object Pose": [
             2.939173008993954e-12,
             0.7071032456438034,
@@ -2826,7 +2660,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 35,
+        "Steps": 33,
         "Object Pose": [
             2.939173166092429e-12,
             0.7071032456438034,
@@ -2909,7 +2743,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 36,
+        "Steps": 34,
         "Object Pose": [
             2.9391731069214686e-12,
             0.7071032456438034,
@@ -2992,7 +2826,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 37,
+        "Steps": 35,
         "Object Pose": [
             2.9391735905900305e-12,
             0.7071032456438034,
@@ -3075,7 +2909,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 38,
+        "Steps": 36,
         "Object Pose": [
             2.9391724361309313e-12,
             0.7071032456438034,
@@ -3158,7 +2992,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 39,
+        "Steps": 37,
         "Object Pose": [
             2.939172898320267e-12,
             0.7071032456438034,
@@ -3241,7 +3075,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 40,
+        "Steps": 38,
         "Object Pose": [
             2.939172947155904e-12,
             0.7071032456438034,
@@ -3324,7 +3158,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 41,
+        "Steps": 39,
         "Object Pose": [
             2.939173098417488e-12,
             0.7071032456438034,
@@ -3407,7 +3241,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 42,
+        "Steps": 40,
         "Object Pose": [
             2.9391733799157367e-12,
             0.7071032456438034,
@@ -3490,7 +3324,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 43,
+        "Steps": 41,
         "Object Pose": [
             2.9391730713653434e-12,
             0.7071032456438034,
@@ -3573,7 +3407,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 44,
+        "Steps": 42,
         "Object Pose": [
             2.939173418030289e-12,
             0.7071032456438034,
@@ -3656,7 +3490,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 45,
+        "Steps": 43,
         "Object Pose": [
             2.939173413479136e-12,
             0.7071032456438034,
@@ -3739,7 +3573,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 46,
+        "Steps": 44,
         "Object Pose": [
             2.9391738317843404e-12,
             0.7071032456438034,
@@ -3822,7 +3656,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 47,
+        "Steps": 45,
         "Object Pose": [
             2.9391740437895613e-12,
             0.7071032456438034,
@@ -3905,7 +3739,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 48,
+        "Steps": 46,
         "Object Pose": [
             2.9391729556037435e-12,
             0.7071032456438034,
@@ -3988,7 +3822,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 49,
+        "Steps": 47,
         "Object Pose": [
             2.9391730542440606e-12,
             0.7071032456438034,
@@ -4071,7 +3905,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 50,
+        "Steps": 48,
         "Object Pose": [
             2.939172810255248e-12,
             0.7071032456438034,
@@ -4154,7 +3988,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 51,
+        "Steps": 49,
         "Object Pose": [
             2.93917342786745e-12,
             0.7071032456438034,
@@ -4237,256 +4071,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 52,
-        "Object Pose": [
-            2.939173820784021e-12,
-            0.7071032456438034,
-            0.707110316711614,
-            2.939383246661231e-12,
-            0.023272668742200138,
-            -0.02558725324589377,
-            0.06733540005028237
-        ],
-        "TCP Pose": [
-            0.980440527629713,
-            0.19118165846142784,
-            -0.04648968424822754,
-            0.004965330563840159,
-            0.059804419301023384,
-            -0.01953535653244507,
-            0.18407646625775825
-        ],
-        "Joint States": [
-            1.151856455576632,
-            -0.8132191732224844,
-            2.0552791122416303,
-            -2.201644004464534,
-            1.1748335149620548,
-            2.367921520734208,
-            2.813643896146952
-        ],
-        "Gripper State": [
-            0.04000132712773835
-        ],
-        "Action": [
-            0.05704348040020441,
-            -0.024234480076511286,
-            0.16666718231513747,
-            3.1414734128520796,
-            0.08020833172701058,
-            0.3429590264086943,
-            0.04
-        ],
-        "Reward": 1,
-        "Instruction": "Grasp the scissors at  its handle",
-        "chain_params": [
-            {
-                "skill_name": "grasp_obj",
-                "params": {
-                    "part_grasp": "handle"
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "top",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "left",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "bottom",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": true
-                }
-            }
-        ]
-    },
-    {
-        "Success": false,
-        "Completion Rate": 0.0,
-        "Current Skill": "grasp_obj",
-        "Current Skill Success": false,
-        "Steps": 53,
-        "Object Pose": [
-            2.939172613364086e-12,
-            0.7071032456438034,
-            0.707110316711614,
-            2.939384453959192e-12,
-            0.023272668742200138,
-            -0.02558725324589377,
-            0.06733540005028237
-        ],
-        "TCP Pose": [
-            0.9809189925702138,
-            0.18888261721630736,
-            -0.04577049708742975,
-            0.005133081425855855,
-            0.05973240161045314,
-            -0.020137810146334603,
-            0.18234893594371748
-        ],
-        "Joint States": [
-            1.149838556429022,
-            -0.8168039879124566,
-            2.0590511266425944,
-            -2.1996768598619973,
-            1.17751844014892,
-            2.3677954196745805,
-            2.818308831987989
-        ],
-        "Gripper State": [
-            0.040001204615444326
-        ],
-        "Action": [
-            0.05704348040020441,
-            -0.024234480076511286,
-            0.16666718231513747,
-            3.1414734128520796,
-            0.08020833172701058,
-            0.3429590264086943,
-            0.04
-        ],
-        "Reward": 1,
-        "Instruction": "Grasp the scissors at  its handle",
-        "chain_params": [
-            {
-                "skill_name": "grasp_obj",
-                "params": {
-                    "part_grasp": "handle"
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "top",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "left",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "bottom",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": true
-                }
-            }
-        ]
-    },
-    {
-        "Success": false,
-        "Completion Rate": 0.0,
-        "Current Skill": "grasp_obj",
-        "Current Skill Success": false,
-        "Steps": 54,
-        "Object Pose": [
-            2.9391741409219956e-12,
-            0.7071032456438034,
-            0.707110316711614,
-            2.9393829265392155e-12,
-            0.023272668742200138,
-            -0.02558725324589377,
-            0.06733540005028237
-        ],
-        "TCP Pose": [
-            0.9813397748166137,
-            0.18683721217916355,
-            -0.045123694714824115,
-            0.00528721886058268,
-            0.05965180028448091,
-            -0.020663993146209737,
-            0.18079205005115256
-        ],
-        "Joint States": [
-            1.147958142616177,
-            -0.8200500429177433,
-            2.062451299586679,
-            -2.197836248678613,
-            1.179914410771808,
-            2.36765581037835,
-            2.822448343988651
-        ],
-        "Gripper State": [
-            0.040001092713616
-        ],
-        "Action": [
-            0.05704348040020441,
-            -0.024234480076511286,
-            0.16666718231513747,
-            3.1414734128520796,
-            0.08020833172701058,
-            0.3429590264086943,
-            0.04
-        ],
-        "Reward": 1,
-        "Instruction": "Grasp the scissors at  its handle",
-        "chain_params": [
-            {
-                "skill_name": "grasp_obj",
-                "params": {
-                    "part_grasp": "handle"
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "top",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "left",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "bottom",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": true
-                }
-            }
-        ]
-    },
-    {
-        "Success": false,
-        "Completion Rate": 0.0,
-        "Current Skill": "grasp_obj",
-        "Current Skill Success": false,
-        "Steps": 55,
+        "Steps": 50,
         "Object Pose": [
             2.9391727556268685e-12,
             0.7071032456438034,
@@ -4569,7 +4154,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 56,
+        "Steps": 51,
         "Object Pose": [
             2.939173001254668e-12,
             0.7071032456438034,
@@ -4652,7 +4237,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 57,
+        "Steps": 52,
         "Object Pose": [
             2.9391729782998424e-12,
             0.7071032456438034,
@@ -4735,7 +4320,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 58,
+        "Steps": 53,
         "Object Pose": [
             2.9391724650888844e-12,
             0.7071032456438034,
@@ -4818,7 +4403,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 59,
+        "Steps": 54,
         "Object Pose": [
             2.939172933385969e-12,
             0.7071032456438034,
@@ -4901,7 +4486,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 60,
+        "Steps": 55,
         "Object Pose": [
             2.9391729201060343e-12,
             0.7071032456438034,
@@ -4984,7 +4569,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 61,
+        "Steps": 56,
         "Object Pose": [
             2.9391725053344503e-12,
             0.7071032456438034,
@@ -5067,7 +4652,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 62,
+        "Steps": 57,
         "Object Pose": [
             2.9391723541861305e-12,
             0.7071032456438034,
@@ -5150,7 +4735,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 63,
+        "Steps": 58,
         "Object Pose": [
             2.939171636810206e-12,
             0.7071032456438034,
@@ -5233,173 +4818,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 64,
-        "Object Pose": [
-            2.9391716363795257e-12,
-            0.7071032456438034,
-            0.707110316711614,
-            2.9393838636893954e-12,
-            0.023272668742200138,
-            -0.02558725324589377,
-            0.06733540005028237
-        ],
-        "TCP Pose": [
-            0.9834646816446074,
-            0.17615785692539784,
-            -0.0416998085116215,
-            0.005172559445388546,
-            0.056427073462004915,
-            -0.025805090243909153,
-            0.14286844378566135
-        ],
-        "Joint States": [
-            1.0881431589532358,
-            -0.8930897506684418,
-            2.1506759022130426,
-            -2.1531009115180035,
-            1.2561753610848354,
-            2.392057021873488,
-            2.8164813321652704
-        ],
-        "Gripper State": [
-            0.0400004939678665
-        ],
-        "Action": [
-            0.05327266874220016,
-            -0.025587253245893782,
-            0.11682793087420931,
-            3.1414734128520796,
-            0.08020833172701058,
-            0.3429590264086943,
-            0.04
-        ],
-        "Reward": 1,
-        "Instruction": "Grasp the scissors at  its handle",
-        "chain_params": [
-            {
-                "skill_name": "grasp_obj",
-                "params": {
-                    "part_grasp": "handle"
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "top",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "left",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "bottom",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": true
-                }
-            }
-        ]
-    },
-    {
-        "Success": false,
-        "Completion Rate": 0.0,
-        "Current Skill": "grasp_obj",
-        "Current Skill Success": false,
-        "Steps": 65,
-        "Object Pose": [
-            2.9391714772743387e-12,
-            0.7071032456438034,
-            0.707110316711614,
-            2.9393838385154253e-12,
-            0.023272668742200138,
-            -0.02558725324589377,
-            0.06733540005028237
-        ],
-        "TCP Pose": [
-            0.9835796297232126,
-            0.17556490704057254,
-            -0.041476933056031236,
-            0.005266823867269166,
-            0.056230550479503594,
-            -0.02594530213689089,
-            0.1403768449047651
-        ],
-        "Joint States": [
-            1.084063819984304,
-            -0.8978165245410226,
-            2.156089611876977,
-            -2.149912230652435,
-            1.2609147893951522,
-            2.39345371068081,
-            2.815618887018386
-        ],
-        "Gripper State": [
-            0.04000048929598536
-        ],
-        "Action": [
-            0.05327266874220016,
-            -0.025587253245893782,
-            0.11682793087420931,
-            3.1414734128520796,
-            0.08020833172701058,
-            0.3429590264086943,
-            0.04
-        ],
-        "Reward": 1,
-        "Instruction": "Grasp the scissors at  its handle",
-        "chain_params": [
-            {
-                "skill_name": "grasp_obj",
-                "params": {
-                    "part_grasp": "handle"
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "top",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "left",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "bottom",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": true
-                }
-            }
-        ]
-    },
-    {
-        "Success": false,
-        "Completion Rate": 0.0,
-        "Current Skill": "grasp_obj",
-        "Current Skill Success": false,
-        "Steps": 66,
+        "Steps": 59,
         "Object Pose": [
             2.9391715486089766e-12,
             0.7071032456438034,
@@ -5482,7 +4901,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 67,
+        "Steps": 60,
         "Object Pose": [
             2.9391713101643403e-12,
             0.7071032456438034,
@@ -5565,7 +4984,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 68,
+        "Steps": 61,
         "Object Pose": [
             2.939171935030458e-12,
             0.7071032456438034,
@@ -5648,90 +5067,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 69,
-        "Object Pose": [
-            2.9391769414444086e-12,
-            0.7071032456438034,
-            0.707110316711614,
-            2.9393775611414804e-12,
-            0.023272668742200138,
-            -0.02558725324589377,
-            0.06733540005028237
-        ],
-        "TCP Pose": [
-            0.9839335139866943,
-            0.17372610217230755,
-            -0.04076843908862671,
-            0.005658255216025364,
-            0.055571243805114134,
-            -0.026217262730829846,
-            0.13253531345292435
-        ],
-        "Joint States": [
-            1.0709446684993542,
-            -0.9127677926287008,
-            2.172884431281393,
-            -2.1394850698768746,
-            1.2756051403766273,
-            2.3975988278107048,
-            2.812671804061576
-        ],
-        "Gripper State": [
-            0.04000041469859531
-        ],
-        "Action": [
-            0.05327266874220016,
-            -0.025587253245893782,
-            0.11682793087420931,
-            3.1414734128520796,
-            0.08020833172701058,
-            0.3429590264086943,
-            0.04
-        ],
-        "Reward": 1,
-        "Instruction": "Grasp the scissors at  its handle",
-        "chain_params": [
-            {
-                "skill_name": "grasp_obj",
-                "params": {
-                    "part_grasp": "handle"
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "top",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "left",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "bottom",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": true
-                }
-            }
-        ]
-    },
-    {
-        "Success": false,
-        "Completion Rate": 0.0,
-        "Current Skill": "grasp_obj",
-        "Current Skill Success": false,
-        "Steps": 70,
+        "Steps": 62,
         "Object Pose": [
             2.9391780077228184e-12,
             0.7071032456438034,
@@ -5814,7 +5150,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 71,
+        "Steps": 63,
         "Object Pose": [
             2.9391770592736635e-12,
             0.7071032456438034,
@@ -5897,7 +5233,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 72,
+        "Steps": 64,
         "Object Pose": [
             2.9391760510021097e-12,
             0.7071032456438034,
@@ -5980,7 +5316,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 73,
+        "Steps": 65,
         "Object Pose": [
             2.9391763755247996e-12,
             0.7071032456438034,
@@ -6063,7 +5399,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 74,
+        "Steps": 66,
         "Object Pose": [
             2.939176403675726e-12,
             0.7071032456438034,
@@ -6146,90 +5482,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 75,
-        "Object Pose": [
-            2.939179959666521e-12,
-            0.7071032456438034,
-            0.707110316711614,
-            2.9393707996784015e-12,
-            0.023272668742200138,
-            -0.02558725324589377,
-            0.06733540005028237
-        ],
-        "TCP Pose": [
-            0.9842407008161492,
-            0.1721106380938123,
-            -0.04012956011923228,
-            0.006147317830827336,
-            0.05483624050783969,
-            -0.026201291271037576,
-            0.12534336547096303
-        ],
-        "Joint States": [
-            1.0583352657401606,
-            -0.9266872748328647,
-            2.187982661828935,
-            -2.1291707103277497,
-            1.2887464882482926,
-            2.400997757063046,
-            2.8095770381040897
-        ],
-        "Gripper State": [
-            0.040000266848714834
-        ],
-        "Action": [
-            0.05327266874220016,
-            -0.025587253245893782,
-            0.11682793087420931,
-            3.1414734128520796,
-            0.08020833172701058,
-            0.3429590264086943,
-            0.04
-        ],
-        "Reward": 1,
-        "Instruction": "Grasp the scissors at  its handle",
-        "chain_params": [
-            {
-                "skill_name": "grasp_obj",
-                "params": {
-                    "part_grasp": "handle"
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "top",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "left",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "bottom",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": true
-                }
-            }
-        ]
-    },
-    {
-        "Success": false,
-        "Completion Rate": 0.0,
-        "Current Skill": "grasp_obj",
-        "Current Skill Success": false,
-        "Steps": 76,
+        "Steps": 67,
         "Object Pose": [
             2.939179748294333e-12,
             0.7071032456438034,
@@ -6312,7 +5565,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 77,
+        "Steps": 68,
         "Object Pose": [
             2.939177239737479e-12,
             0.7071032456438034,
@@ -6395,7 +5648,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 78,
+        "Steps": 69,
         "Object Pose": [
             2.939175409735319e-12,
             0.7071032456438034,
@@ -6478,7 +5731,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 79,
+        "Steps": 70,
         "Object Pose": [
             2.9391736941763258e-12,
             0.7071032456438034,
@@ -6561,7 +5814,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 80,
+        "Steps": 71,
         "Object Pose": [
             2.9391716015491506e-12,
             0.7071032456438034,
@@ -6644,90 +5897,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 81,
-        "Object Pose": [
-            2.9391725599546822e-12,
-            0.7071032456438034,
-            0.707110316711614,
-            2.9393587893806115e-12,
-            0.023272668742200138,
-            -0.02558725324589377,
-            0.06733540005028237
-        ],
-        "TCP Pose": [
-            0.9843943802840494,
-            0.1712936451962714,
-            -0.03980391539861435,
-            0.006468345962944055,
-            0.05431101800818529,
-            -0.026046696535526572,
-            0.12143403292541298
-        ],
-        "Joint States": [
-            1.0510564472607995,
-            -0.9344399176568456,
-            2.196080136460793,
-            -2.1230377803503453,
-            1.2957199627249858,
-            2.4026122266230474,
-            2.8076655822752383
-        ],
-        "Gripper State": [
-            0.040000155106039666
-        ],
-        "Action": [
-            0.05327266874220016,
-            -0.025587253245893782,
-            0.11682793087420931,
-            3.1414734128520796,
-            0.08020833172701058,
-            0.3429590264086943,
-            0.04
-        ],
-        "Reward": 1,
-        "Instruction": "Grasp the scissors at  its handle",
-        "chain_params": [
-            {
-                "skill_name": "grasp_obj",
-                "params": {
-                    "part_grasp": "handle"
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "top",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "left",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "bottom",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": true
-                }
-            }
-        ]
-    },
-    {
-        "Success": false,
-        "Completion Rate": 0.0,
-        "Current Skill": "grasp_obj",
-        "Current Skill Success": false,
-        "Steps": 82,
+        "Steps": 72,
         "Object Pose": [
             2.9391726862898427e-12,
             0.7071032456438034,
@@ -6810,7 +5980,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 83,
+        "Steps": 73,
         "Object Pose": [
             2.9391717313655875e-12,
             0.7071032456438034,
@@ -6893,7 +6063,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 84,
+        "Steps": 74,
         "Object Pose": [
             2.939171030061219e-12,
             0.7071032456438034,
@@ -6976,7 +6146,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 85,
+        "Steps": 75,
         "Object Pose": [
             2.9391719330942072e-12,
             0.7071032456438034,
@@ -7059,7 +6229,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 86,
+        "Steps": 76,
         "Object Pose": [
             2.9391724983324803e-12,
             0.7071032456438034,
@@ -7142,7 +6312,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 87,
+        "Steps": 77,
         "Object Pose": [
             2.9391715092493393e-12,
             0.7071032456438034,
@@ -7225,7 +6395,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 88,
+        "Steps": 78,
         "Object Pose": [
             2.9391722153904727e-12,
             0.7071032456438034,
@@ -7308,7 +6478,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 89,
+        "Steps": 79,
         "Object Pose": [
             0.0060855158797171694,
             0.7070766291131801,
@@ -7391,7 +6561,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 90,
+        "Steps": 80,
         "Object Pose": [
             0.016078021889446847,
             0.706919103806491,
@@ -7474,7 +6644,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 91,
+        "Steps": 81,
         "Object Pose": [
             0.024880698965157648,
             0.7066639913511253,
@@ -7557,7 +6727,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 92,
+        "Steps": 82,
         "Object Pose": [
             -0.018141791221119318,
             0.7068535901472328,
@@ -7640,7 +6810,7 @@
         "Completion Rate": 0.0,
         "Current Skill": "grasp_obj",
         "Current Skill Success": false,
-        "Steps": 93,
+        "Steps": 83,
         "Object Pose": [
             -0.05447633608289193,
             0.7030132560532695,
@@ -7721,92 +6891,9 @@
     {
         "Success": false,
         "Completion Rate": 0.25,
-        "Current Skill": "grasp_obj",
-        "Current Skill Success": true,
-        "Steps": 94,
-        "Object Pose": [
-            -0.08002020611210801,
-            0.7000492081293227,
-            0.7052594476984206,
-            -0.0783389063199295,
-            0.02439432873528166,
-            -0.0377961002436803,
-            0.06753421882826445
-        ],
-        "TCP Pose": [
-            0.9844572105404338,
-            0.17097680216281488,
-            -0.039591533798981254,
-            0.006591220567542557,
-            0.05413720755687215,
-            -0.02595956758500031,
-            0.12016990759046908
-        ],
-        "Joint States": [
-            1.0486825372333657,
-            -0.9369273985149783,
-            2.1985671148766515,
-            -2.121015593380122,
-            1.2976328823546643,
-            2.402895170483855,
-            2.8073025255934776
-        ],
-        "Gripper State": [
-            0.012723653840088407
-        ],
-        "Action": [
-            0.05413532738763317,
-            -0.025979242413413973,
-            0.12019641335856882,
-            -3.1410832617460396,
-            0.08038517265497269,
-            0.3440867441299168,
-            0.0
-        ],
-        "Reward": -2,
-        "Instruction": "Move upwards",
-        "chain_params": [
-            {
-                "skill_name": "grasp_obj",
-                "params": {
-                    "part_grasp": "handle"
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "top",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "left",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": false
-                }
-            },
-            {
-                "skill_name": "move_gripper",
-                "params": {
-                    "dir_move": "bottom",
-                    "grasping": true,
-                    "touching": false,
-                    "put_down": true
-                }
-            }
-        ]
-    },
-    {
-        "Success": false,
-        "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 95,
+        "Steps": 84,
         "Object Pose": [
             -0.08915571771358259,
             0.6975833491280159,
@@ -7889,7 +6976,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 96,
+        "Steps": 85,
         "Object Pose": [
             -0.09262692409698889,
             0.697239725063576,
@@ -7972,7 +7059,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 97,
+        "Steps": 86,
         "Object Pose": [
             -0.0915659920931162,
             0.698311921415251,
@@ -8055,7 +7142,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 98,
+        "Steps": 87,
         "Object Pose": [
             -0.09056609338448712,
             0.6992024344700085,
@@ -8138,7 +7225,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 99,
+        "Steps": 88,
         "Object Pose": [
             -0.09037645601106611,
             0.6994550143634557,
@@ -8221,7 +7308,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 100,
+        "Steps": 89,
         "Object Pose": [
             -0.09018259816525472,
             0.6995931055188958,
@@ -8304,7 +7391,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 101,
+        "Steps": 90,
         "Object Pose": [
             -0.08987974642405099,
             0.6998145737972242,
@@ -8387,7 +7474,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 102,
+        "Steps": 91,
         "Object Pose": [
             -0.08957000319777077,
             0.7000686613074636,
@@ -8470,7 +7557,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 103,
+        "Steps": 92,
         "Object Pose": [
             -0.08966053436519815,
             0.700088335252744,
@@ -8553,7 +7640,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 104,
+        "Steps": 93,
         "Object Pose": [
             -0.08966419943794977,
             0.7001256267219566,
@@ -8636,7 +7723,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 105,
+        "Steps": 94,
         "Object Pose": [
             -0.08964596327410396,
             0.7001791663277104,
@@ -8719,7 +7806,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 106,
+        "Steps": 95,
         "Object Pose": [
             -0.08963219597390508,
             0.7002330341303659,
@@ -8802,7 +7889,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 107,
+        "Steps": 96,
         "Object Pose": [
             -0.08961120528478185,
             0.700292741207738,
@@ -8885,7 +7972,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 108,
+        "Steps": 97,
         "Object Pose": [
             -0.08959985182875331,
             0.7003456150947455,
@@ -8968,7 +8055,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 109,
+        "Steps": 98,
         "Object Pose": [
             -0.08958098919606598,
             0.7004036073137921,
@@ -9051,7 +8138,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 110,
+        "Steps": 99,
         "Object Pose": [
             -0.08956534299668421,
             0.7004592743989795,
@@ -9134,7 +8221,7 @@
         "Completion Rate": 0.25,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 111,
+        "Steps": 100,
         "Object Pose": [
             -0.08953274542412745,
             0.7005268385994288,
@@ -9217,7 +8304,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": true,
-        "Steps": 112,
+        "Steps": 101,
         "Object Pose": [
             -0.08946283008750733,
             0.7006105248222209,
@@ -9300,7 +8387,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 113,
+        "Steps": 102,
         "Object Pose": [
             -0.08940574150162992,
             0.7002308398423461,
@@ -9383,7 +8470,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 114,
+        "Steps": 103,
         "Object Pose": [
             -0.09184036214522809,
             0.6998200138685288,
@@ -9466,7 +8553,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 115,
+        "Steps": 104,
         "Object Pose": [
             -0.0926606188239223,
             0.6996923676632879,
@@ -9549,7 +8636,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 116,
+        "Steps": 105,
         "Object Pose": [
             -0.09343288310787937,
             0.6995641606801074,
@@ -9632,7 +8719,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 117,
+        "Steps": 106,
         "Object Pose": [
             -0.09399212739981108,
             0.6994542835179938,
@@ -9715,7 +8802,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 118,
+        "Steps": 107,
         "Object Pose": [
             -0.09416203874597343,
             0.6994314375609384,
@@ -9798,7 +8885,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 119,
+        "Steps": 108,
         "Object Pose": [
             -0.09427443337256196,
             0.6994208726420534,
@@ -9881,7 +8968,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 120,
+        "Steps": 109,
         "Object Pose": [
             -0.0943478427500756,
             0.6994280307490904,
@@ -9964,7 +9051,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 121,
+        "Steps": 110,
         "Object Pose": [
             -0.09441331466400026,
             0.6993929633842906,
@@ -10047,7 +9134,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 122,
+        "Steps": 111,
         "Object Pose": [
             -0.09449438330919889,
             0.6993629375519246,
@@ -10130,7 +9217,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 123,
+        "Steps": 112,
         "Object Pose": [
             -0.09435524418160705,
             0.6994556637834689,
@@ -10213,7 +9300,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 124,
+        "Steps": 113,
         "Object Pose": [
             -0.09443269833062061,
             0.6994351949048304,
@@ -10296,7 +9383,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 125,
+        "Steps": 114,
         "Object Pose": [
             -0.09439891027236472,
             0.699451214703096,
@@ -10379,7 +9466,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 126,
+        "Steps": 115,
         "Object Pose": [
             -0.09437574233081461,
             0.6995044733914281,
@@ -10462,7 +9549,7 @@
         "Completion Rate": 0.5,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 127,
+        "Steps": 116,
         "Object Pose": [
             -0.09434119430021223,
             0.6994941593084358,
@@ -10545,7 +9632,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": true,
-        "Steps": 128,
+        "Steps": 117,
         "Object Pose": [
             -0.09424367522673636,
             0.6994949022908382,
@@ -10628,7 +9715,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 129,
+        "Steps": 118,
         "Object Pose": [
             -0.09454774608202603,
             0.6989538553723095,
@@ -10711,7 +9798,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 130,
+        "Steps": 119,
         "Object Pose": [
             -0.09477923101025322,
             0.6985183386410485,
@@ -10794,7 +9881,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 131,
+        "Steps": 120,
         "Object Pose": [
             -0.09484607534631447,
             0.6982256742631996,
@@ -10877,7 +9964,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 132,
+        "Steps": 121,
         "Object Pose": [
             -0.09491237854260773,
             0.698061362821727,
@@ -10960,7 +10047,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 133,
+        "Steps": 122,
         "Object Pose": [
             -0.09495128118645217,
             0.697966262763074,
@@ -11043,7 +10130,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 134,
+        "Steps": 123,
         "Object Pose": [
             -0.09495793504335466,
             0.6979289464948749,
@@ -11126,7 +10213,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 135,
+        "Steps": 124,
         "Object Pose": [
             -0.09494223014701078,
             0.6979394440494195,
@@ -11209,7 +10296,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 136,
+        "Steps": 125,
         "Object Pose": [
             -0.09490984703140948,
             0.6979871235465692,
@@ -11292,7 +10379,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 137,
+        "Steps": 126,
         "Object Pose": [
             -0.09486402988179603,
             0.6980616498669355,
@@ -11375,7 +10462,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 138,
+        "Steps": 127,
         "Object Pose": [
             -0.0948111551076381,
             0.6981544596342673,
@@ -11458,7 +10545,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 139,
+        "Steps": 128,
         "Object Pose": [
             -0.0947542582167735,
             0.6982582528689305,
@@ -11541,7 +10628,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 140,
+        "Steps": 129,
         "Object Pose": [
             -0.09469654220784533,
             0.6983674518037245,
@@ -11624,7 +10711,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 141,
+        "Steps": 130,
         "Object Pose": [
             -0.09463973719287636,
             0.6984778100703773,
@@ -11707,7 +10794,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 142,
+        "Steps": 131,
         "Object Pose": [
             -0.09458594033462302,
             0.6985861733479898,
@@ -11790,7 +10877,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 143,
+        "Steps": 132,
         "Object Pose": [
             -0.09453731841084594,
             0.6986900877574977,
@@ -11873,7 +10960,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 144,
+        "Steps": 133,
         "Object Pose": [
             -0.09449354021248083,
             0.6987880903103288,
@@ -11956,7 +11043,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 145,
+        "Steps": 134,
         "Object Pose": [
             -0.09445701674188994,
             0.6988788531952727,
@@ -12039,7 +11126,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 146,
+        "Steps": 135,
         "Object Pose": [
             -0.09442770361357877,
             0.6989615995111345,
@@ -12122,7 +11209,7 @@
         "Completion Rate": 0.75,
         "Current Skill": "move_gripper",
         "Current Skill Success": false,
-        "Steps": 147,
+        "Steps": 136,
         "Object Pose": [
             -0.0944050825670176,
             0.6990363579972049,
@@ -12205,7 +11292,7 @@
         "Completion Rate": 1.0,
         "Current Skill": "move_gripper",
         "Current Skill Success": true,
-        "Steps": 148,
+        "Steps": 137,
         "Object Pose": [
             -0.09448922327203411,
             0.6990281347785156,

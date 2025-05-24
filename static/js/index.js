@@ -8,15 +8,15 @@ var demos = {
   },
   "demo2": {
     base: "./static/interpolation/180926",
-    frames: 147
+    frames: 137
   },
   "demo3": {
     base: "./static/interpolation/300036",
-    frames: 118
+    frames: 114
   },
   "demo4": {
     base: "./static/interpolation/300183",
-    frames: 109
+    frames: 62
   }
 };
 
