@@ -678,10 +678,18 @@
       <div class="container is-max-desktop">
         <h2
           class="title is-3 has-text-weight-semibold"
-          style="margin-bottom: 40px"
+          style="margin-bottom: 20px"
         >
           Qualitative Results
         </h2>
+        
+        <p class="content has-text-justified" style="margin-bottom: 25px">
+          Rollout visualizations for some baselines are shown in this section.
+        </p>
+        
+        <h5 class="subtitle is-5 has-text-weight-semibold has-text-left" style="margin-bottom: 30px">
+          Model Rollouts
+        </h5>
 
         <!-- Video Grid (2x2) -->
         <div
@@ -693,9 +701,10 @@
             <div class="video-container">
               <p
                 class="subtitle is-5"
-                style="font-style: italic; margin-bottom: 4px; min-height: 60px;"
+                style="margin-bottom: 4px; min-height: 60px; display: flex; align-items: center; justify-content: flex-start;"
               >
-                Test 2: Place gripper tip on the right of the bottle.
+                <img src="./static/interpolation/Picture1.png" style="width: 24px; height: 32px; margin-right: 8px;">
+                Touch the right of the bottle.
               </p>
               <div
                 class="subtitle-bar"
@@ -705,6 +714,7 @@
                   margin: 0 0 16px 0;
                 "
               ></div>
+              <p style="margin: -12px 0 12px 0; font-size: 1.2rem; color: #666; text-align: left;">MODEL: DP3</p>
               <video autoplay controls muted loop playsinline width="100%">
                 <source
                   src="./static/videos/test2_2_env_2_video.mp4"
@@ -719,9 +729,10 @@
             <div class="video-container">
               <p
                 class="subtitle is-5"
-                style="font-style: italic; margin-bottom: 4px; min-height: 60px;"
+                style="margin-bottom: 4px; min-height: 60px; display: flex; align-items: center; justify-content: flex-start;"
               >
-                Test 3: Place gripper tip on the right of the bottle.
+                <img src="./static/interpolation/Picture1.png" style="width: 24px; height: 32px; margin-right: 8px;">
+                Place the gripper tip on the lid of the pot.
               </p>
               <div
                 class="subtitle-bar"
@@ -731,6 +742,7 @@
                   margin: 0 0 16px 0;
                 "
               ></div>
+              <p style="margin: -12px 0 12px 0; font-size: 1.2rem; color: #666; text-align: left;">MODEL: DP</p>
               <video autoplay controls muted loop playsinline width="100%">
                 <source
                   src="./static/videos/test3_2_env_1_video.mp4"
@@ -749,9 +761,10 @@
             <div class="video-container">
               <p
                 class="subtitle is-5"
-                style="font-style: italic; margin-bottom: 4px; min-height: 60px;"
+                style="margin-bottom: 4px; min-height: 60px; display: flex; align-items: center; justify-content: flex-start;"
               >
-                Test 2: Grab the left of the scissors and move it to the left.
+                <img src="./static/interpolation/Picture1.png" style="width: 24px; height: 32px; margin-right: 8px;">
+                Grab a handle of the scissors and move it to the left.
               </p>
               <div
                 class="subtitle-bar"
@@ -761,6 +774,7 @@
                   margin: 0 0 16px 0;
                 "
               ></div>
+              <p style="margin: -12px 0 12px 0; font-size: 1.2rem; color: #666; text-align: left;">MODEL: DP</p>
               <video autoplay controls muted loop playsinline width="100%">
                 <source
                   src="./static/videos/qualitative_results/DP_compressed/compressed_test2_3_env_2_180910.mp4"
@@ -775,9 +789,10 @@
             <div class="video-container">
               <p
                 class="subtitle is-5"
-                style="font-style: italic; margin-bottom: 4px; min-height: 60px;"
+                style="margin-bottom: 4px; min-height: 60px; display: flex; align-items: center; justify-content: flex-start;"
               >
-                Test 3: Take hold of the left of the mug, slide it backwards, then let go of it.
+                <img src="./static/interpolation/Picture1.png" style="width: 24px; height: 32px; margin-right: 8px;">
+                Hold the left of the mug, slide back, then release it.
               </p>
               <div
                 class="subtitle-bar"
@@ -787,6 +802,7 @@
                   margin: 0 0 16px 0;
                 "
               ></div>
+              <p style="margin: -12px 0 12px 0; font-size: 1.2rem; color: #666; text-align: left;">MODEL: DP</p>
               <video autoplay controls muted loop playsinline width="100%">
                 <source
                   src="./static/videos/qualitative_results/DP_compressed/compressed_test3_5_env_5_mug_2.mp4"
@@ -796,7 +812,7 @@
             </div>
           </div>
 
-          <div
+        <div
           class="columns is-multiline is-centered"
           style="margin-bottom: 40px"
         >
@@ -805,9 +821,10 @@
             <div class="video-container">
               <p
                 class="subtitle is-5"
-                style="font-style: italic; margin-bottom: 4px; min-height: 60px;"
+                style="margin-bottom: 4px; min-height: 60px; display: flex; align-items: center; justify-content: flex-start;"
               >
-                Test 1: Push the right of the kitchenpot in to the left.
+                <img src="./static/interpolation/Picture1.png" style="width: 24px; height: 32px; margin-right: 8px;">
+                Push the right side of the kitchen pot to the left.
               </p>
               <div
                 class="subtitle-bar"
@@ -817,6 +834,7 @@
                   margin: 0 0 16px 0;
                 "
               ></div>
+              <p style="margin: -12px 0 12px 0; font-size: 1.2rem; color: #666; text-align: left;">MODEL: DP</p>
               <video autoplay controls muted loop playsinline width="100%">
                 <source
                   src="./static/videos/qualitative_results/DP_compressed/compressed_test1_4_env_4_video_300401.mp4"
@@ -831,9 +849,10 @@
             <div class="video-container">
               <p
                 class="subtitle is-5"
-                style="font-style: italic; margin-bottom: 4px; min-height: 60px;"
+                style="margin-bottom: 4px; min-height: 60px; display: flex; align-items: center; justify-content: flex-start;"
               >
-                Test 2: Place gripper tip on the left of the mug.
+                <img src="./static/interpolation/Picture1.png" style="width: 24px; height: 32px; margin-right: 8px;">
+                Grab the handle of the kettle.
               </p>
               <div
                 class="subtitle-bar"
@@ -843,9 +862,10 @@
                   margin: 0 0 16px 0;
                 "
               ></div>
+              <p style="margin: -12px 0 12px 0; font-size: 1.2rem; color: #666; text-align: left;">MODEL: Gemini-2.0 Flash+DP3-S</p>
               <video autoplay controls muted loop playsinline width="100%">
                 <source
-                  src="./static/videos/qualitative_results/DP_compressed/compressed_test2_2_env_2_video_180100.mp4"
+                  src="./static/videos/test5_1_video_episode_100472.mp4"
                   type="video/mp4"
                 />
               </video>
@@ -854,12 +874,12 @@
           <!-- Video 3 -->
           <div class="column is-half">
           <div class="video-container">
-            <!-- Add min-height to this subtitle -->
             <p
               class="subtitle is-5"
-              style="font-style: italic; margin-bottom: 4px; min-height: 60px;"
+              style="margin-bottom: 4px; min-height: 60px; display: flex; align-items: center; justify-content: flex-start;"
             >
-              Test 3: Take hold of the right of the mug, slide it to the left, then let go of it.
+              <img src="./static/interpolation/Picture1.png" style="width: 24px; height: 32px; margin-right: 8px;">
+              Take the mug on the right, slide it left, then let go.
             </p>
             <div
               class="subtitle-bar"
@@ -869,6 +889,7 @@
                 margin: 0 0 16px 0;
               "
             ></div>
+            <p style="margin: -12px 0 12px 0; font-size: 1.2rem; color: #666; text-align: left;">MODEL: DP</p>
             <video autoplay controls muted loop playsinline width="100%">
               <source src="./static/videos/test3_5_env_5_mug.mp4" type="video/mp4" />
             </video>
@@ -881,9 +902,10 @@
             <!-- Add min-height to this subtitle -->
             <p
               class="subtitle is-5"
-              style="font-style: italic; margin-bottom: 4px; min-height: 60px;"
+              style="margin-bottom: 4px; min-height: 60px; display: flex; align-items: center; justify-content: flex-start;"
             >
-              Test 1: Place gripper tip on the top of the stapler.
+              <img src="./static/interpolation/Picture1.png" style="width: 24px; height: 32px; margin-right: 8px;">
+              Place gripper tip on the top of the stapler.
             </p>
             <div
               class="subtitle-bar"
@@ -893,22 +915,23 @@
                 margin: 0 0 16px 0;
               "
             ></div>
+            <p style="margin: -12px 0 12px 0; font-size: 1.2rem; color: #666; text-align: left;">MODEL: DP</p>
             <video autoplay controls muted loop playsinline width="100%">
               <source src="./static/videos/qualitative_results/DP_compressed/compressed_test1_2_env_2_video_300250.mp4" type="video/mp4" />
             </video>
           </div>
         </div>
+      </div>
 
-<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
-  <h5 class="subtitle is-5" style="flex: none; margin-top: 10px; margin-bottom: 4px;">
-    <strong>Comparison of End-to-End and Bi-level Episodes</strong>
-  </h5>
+      <div class="container is-max-desktop">
+        <h5 class="subtitle is-5 has-text-weight-semibold has-text-left" style="margin-bottom: 30px; text-align: left;">
+          Comparison of End-to-End and Bi-level Episodes
+        </h5>
 
-</div>
-
-  <p class="subtitle is-5" style="font-style: italic; margin-bottom: 0px; min-height: 50px;">
-    Test 5: Lift the box by its rotation lid, move it to the right, turn the bottom to face front, then set it down.
-  </p>
+        <p class="subtitle is-5" style="margin-bottom: 0px; min-height: 50px; display: flex; align-items: center; justify-content: flex-start; text-align: left;">
+          <img src="./static/interpolation/Picture1.png" style="width: 24px; height: 32px; margin-right: 8px;">
+          Lift the box by its rotation lid, move it to the right, turn the bottom to face front, then set it down.
+        </p>
 
         <!-- Single Bar for Two Videos -->
         <div
@@ -933,9 +956,9 @@
               </video>
               <p
                 class="caption has-text-centered"
-                style="font-style: italic; margin-top: 5px"
+                style="margin-top: 5px; font-size: 1.2rem; font-weight: 500;"
               >
-                DP3
+                MODEL: DP3
               </p>
             </div>
           </div>
@@ -951,9 +974,9 @@
               </video>
               <p
                 class="caption has-text-centered"
-                style="font-style: italic; margin-top: 5px"
+                style="margin-top: 5px; font-size: 1.2rem; font-weight: 500;"
               >
-                Gemini-2.0 Flash+DP3-S
+                MODEL: Gemini-2.0 Flash+DP3-S
               </p>
             </div>
           </div>
